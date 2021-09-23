@@ -27,7 +27,7 @@ func main() {
 	char1.Init("Lunasphys", "Archer", 68, 1350, 1152, []string{"Potion", "Potion", "Potion"})
 	char1.DisplayInfo()
 	char1.AccessInventory()
-	char1.TakePot
+	char1.TakePot()
 }
 
 func (char1 *personnage) DisplayInfo() {
@@ -62,7 +62,7 @@ func (char1 *personnage) TakePot() {
 	for _, objet := range char1.Inventaire {
 		if objet == "potion" {
 			if (char1.Point_de_vie_restant) < (char1.Point_de_vie_max) {
-				char1.Inventaire = Remove(char1.Inventaire, objet) 
+				char1.Inventaire = Remove(char1.Inventaire, objet)
 				fmt.Println("Vous avez utilisé une potion")
 			} else {
 				fmt.Println("Vous êtes full")
