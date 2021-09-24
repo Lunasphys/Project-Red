@@ -60,13 +60,20 @@ func Remove(tab []string, s string) []string {
 
 func (char1 *personnage) TakePot() {
 	for _, objet := range char1.Inventaire {
-		if objet == "potion" {
+		if objet == "Potion" {
 			if (char1.Point_de_vie_restant) < (char1.Point_de_vie_max) {
-				Remove(char1.Inventaire, objet)
+				char1.Inventaire = Remove(char1.Inventaire, objet)
+				char1.Point_de_vie_restant += 150
 				fmt.Println("Vous avez utilisé une potion")
+				if char1.Point_de_vie_restant >= char1.Point_de_vie_max {
+					char1.Point_de_vie_restant = char1.Point_de_vie_max
+					fmt.Println("Vous ne pouvez pas utiliser de potion")
 			} else {
-				fmt.Println("Vous êtes full")
-			}
+				fmt.Println("Vous n'avez pas de potion")
+				}
+			}	
 		}
 	}
+	char1.AccessInventory()
+	fmt.Println(char1.Point_de_vie_restant)
 }
