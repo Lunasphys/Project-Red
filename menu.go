@@ -24,14 +24,17 @@ func (char1 *personnage) menu() {
 			char1.DisplayInfo()
 		case "1":
 			char1.AccessInventory()
-			fmt.Println("2 = Choississez une potion de vie")
-			fmt.Println("3 = Ne rien choisir et quitter")
+			fmt.Println("2 = Choisissez une potion de vie")
+			fmt.Println("3 = Choisissez une potion de poison")
+			fmt.Println("4 = Ne rien choisir et quitter")
 			scanner.Scan() // l'utilisateur input dans la console
 			n := scanner.Text()
 			switch n {
 			case "2":
 				char1.TakePot()
 			case "3":
+				char1.PoisonPot()
+			case "4":
 				return
 			}
 		case "2":
