@@ -12,6 +12,7 @@ func (char1 *personnage) menu() {
 		fmt.Println("1 = Acceder au menue de l'inventaire")
 		fmt.Println("2 = Quitter")
 		fmt.Println("3 = Prendre une potion")
+		fmt.Println("4 = Meurt ")
 		// créer une var scanner qui va lire ce que l'utilisateur va écrire
 		scanner := bufio.NewScanner(os.Stdin)
 
@@ -28,6 +29,8 @@ func (char1 *personnage) menu() {
 			os.Exit(2)
 		case "3":
 			char1.TakePot()
+		case "4":
+			char1.Dead()
 		}
 	}
 }
