@@ -12,7 +12,7 @@ type personnage struct {
 
 func main() {
 	var char1 personnage
-	char1.Init("Lunasphys", "Archer", 68, 1350, 1000, []string{"Potion", "Potion", "Potion"}, 100)
+	char1.Init("Lunasphys", "Archer", 68, 1350, 0, []string{"Potion", "Potion", "Potion"}, 100)
 	//char1.TakePot()
 	char1.menu()
 }

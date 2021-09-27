@@ -21,3 +21,13 @@ func (char1 *personnage) DisplayInfo() {
 	fmt.Println(char1.Inventaire)
 	fmt.Println(char1.Money)
 }
+
+func (char1 *personnage) Dead() {
+
+	for char1.Point_de_vie_restant == 0 {
+		fmt.Println("Vous etes mort")
+		char1.Point_de_vie_restant += (char1.Point_de_vie_max / 2)
+		fmt.Println("Vous etes revenue a la vie avec 50% de vos point de vie restant")
+		break
+	}
+}
