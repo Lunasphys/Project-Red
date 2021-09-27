@@ -2,22 +2,19 @@ package main
 
 import "fmt"
 
-type Marchand struct {
-	Nom        string
-	Inventaire []string
+func (char *Marchand) Init(Nom string, Inventaire []string, Argent int) {
+	char.Nom = Nom
+	char.Inventaire = Inventaire
+	char.Argent = Argent
 }
 
-func (char2 *personnage) DisplayInfoMarchand() {
+func (char2 *Marchand) DisplayInfoMarchand() {
 	fmt.Println(char2.Nom)
-	fmt.Println(char2.Classe)
-	fmt.Println(char2.Niveau)
-	fmt.Println(char2.Point_de_vie_max)
-	fmt.Println(char2.Point_de_vie_restant)
 	fmt.Println(char2.Inventaire)
-	fmt.Println(char2.Money)
+	fmt.Println(char2.Argent)
 }
 
-func (char2 *personnage) InventoryMarchand() {
+func (char2 *Marchand) InventoryMarchand() {
 	for i := 0; i < len(char2.Inventaire); i++ {
 		fmt.Println(char2.Inventaire[i])
 	}
