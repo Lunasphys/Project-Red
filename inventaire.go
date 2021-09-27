@@ -1,7 +1,8 @@
 package main
 
-import ( "fmt" 
-"time" )
+import (
+	"fmt"
+)
 
 func (char1 personnage) AccessInventory() {
 	if len(char1.Inventaire) == 0 {
@@ -53,23 +54,3 @@ func (char1 *personnage) TakePot() {
 	char1.AccessInventory()
 	fmt.Println(char1.Point_de_vie_restant)
 }
-
-func (char1 *personnage) PoisonPot() {
-	for _, objet := range char1.Inventaire {
-		if objet == "Poison" {
-		fmt.Println("Applique un poison pendant 3 secondes")
-		char1.Point_de_vie_restant -= 10 
-		time.Sleep(3 * time.Second)
-		}
-	}	
-}	
-
-func (char1 *personnage) PoisonPot() {
-	for i := char1.Point_de_vie_restant; i -= 10; i-- {
-		if objet == "Poison" {
-		fmt.Println("Applique un poison pendant 3 secondes")
-		char1.Point_de_vie_restant -= 10 
-		time.Sleep(3 * time.Second)
-		}
-	}	
-}	
