@@ -1,0 +1,23 @@
+package main
+
+import "fmt"
+
+func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie_max int, Point_de_vie_restant int, Inventaire []string, Money int) {
+	char.Nom = Nom
+	char.Classe = Classe
+	char.Niveau = Niveau
+	char.Point_de_vie_max = Point_de_vie_max
+	char.Point_de_vie_restant = Point_de_vie_restant
+	char.Inventaire = Inventaire
+	char.Money = Money
+}
+
+func (char1 *personnage) DisplayInfo() {
+	fmt.Println(char1.Nom)
+	fmt.Println(char1.Classe)
+	fmt.Println(char1.Niveau)
+	fmt.Println(char1.Point_de_vie_max)
+	fmt.Println(char1.Point_de_vie_restant)
+	fmt.Println(char1.Inventaire)
+	fmt.Println(char1.Money)
+}
