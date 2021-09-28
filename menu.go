@@ -35,10 +35,10 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			case "2":
 				char1.PoisonPot()
 			case "3":
-				return
+				break
 			}
 		case "2":
-			char2.InventoryMarchand()
+			char2.Inventaire2()
 			fmt.Println("1 = Acheter une potion de vie")
 			fmt.Println("2 = Acheter une potion de poison")
 			fmt.Println("3 = Quitter l'inventaire du marchand")
@@ -46,13 +46,12 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			b := scanner.Text()
 			switch b {
 			case "1":
-				AddInventory(char1.Inventaire, "Potion de vie")
-				RemoveInventory(char2.Inventaire, "Potion de vie")
+				char1.Inventaire = AddInventory(char1.Inventaire, "Potion de vie")
+				fmt.Println(char1.Inventaire)
 			case "2":
-				AddInventory(char1.Inventaire, "Potion de poison")
-				RemoveInventory(char2.Inventaire, "Potion de poison")
+				char1.Inventaire = AddInventory(char1.Inventaire, "Potion de poison")
 			case "3":
-				return
+				break
 			}
 		case "3":
 			os.Exit(2)

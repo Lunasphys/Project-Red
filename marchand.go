@@ -14,7 +14,7 @@ func (char2 *Marchand) DisplayInfoMarchand() {
 	fmt.Println(char2.Argent)
 }
 
-func (char2 *Marchand) InventoryMarchand() {
+func (char2 *Marchand) Inventaire2() {
 	for i := 0; i < len(char2.Inventaire); i++ {
 		fmt.Println(char2.Inventaire[i])
 	}

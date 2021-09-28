@@ -2,13 +2,14 @@ package main
 
 import "fmt"
 
-func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie_max int, Point_de_vie_restant int, Inventaire []string, Argent int) {
+func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie_max int, Point_de_vie_restant int, Inventaire []string, Skill []string, Argent int) {
 	char.Nom = Nom
 	char.Classe = Classe
 	char.Niveau = Niveau
 	char.Point_de_vie_max = Point_de_vie_max
 	char.Point_de_vie_restant = Point_de_vie_restant
 	char.Inventaire = Inventaire
+	char.Skill = Skill
 	char.Argent = Argent
 }
 
@@ -19,6 +20,7 @@ func (char1 *personnage) DisplayInfo() {
 	fmt.Println(char1.Point_de_vie_max)
 	fmt.Println(char1.Point_de_vie_restant)
 	fmt.Println(char1.Inventaire)
+	fmt.Println(char1.Skill)
 	fmt.Println(char1.Argent)
 }
 
