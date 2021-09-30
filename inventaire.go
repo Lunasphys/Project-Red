@@ -26,7 +26,3 @@ func RemoveInventory(tab []string, s string) []string {
 func AddInventory(tab []string, s string) []string {
 	return append(tab, s)
 }
-
-func SpellBook(s string) {
-
-}
