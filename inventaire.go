@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func (char1 personnage) AccessInventory() {
+func (char1 *personnage) AccessInventory() {
 	if len(char1.Inventaire) == 0 {
 		fmt.Println("Votre inventaire est vide")
 	}

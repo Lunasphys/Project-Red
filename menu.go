@@ -11,7 +11,8 @@ func (char1 *personnage) menu(char2 *Marchand) {
 		fmt.Println("0 = Afficher les informations du personnages")
 		fmt.Println("1 = Acceder au menue de l'inventaire")
 		fmt.Println("2 = Marchand")
-		fmt.Println("3 = Quitter")
+		fmt.Println("3 = Acceder a la liste de sorts")
+		fmt.Println("4 = Quitter")
 		// créer une var scanner qui va lire ce que l'utilisateur va écrire
 		scanner := bufio.NewScanner(os.Stdin)
 
@@ -41,7 +42,8 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			char2.Inventaire2()
 			fmt.Println("1 = Acheter une potion de vie")
 			fmt.Println("2 = Acheter une potion de poison")
-			fmt.Println("3 = Quitter l'inventaire du marchand")
+			fmt.Println("3 = Acheter Livre de sort : Boule de feu")
+			fmt.Println("4 = Quitter l'inventaire du marchand")
 			scanner.Scan() // l'utilisateur input dans la console
 			b := scanner.Text()
 			switch b {
@@ -51,9 +53,24 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			case "2":
 				char1.Inventaire = AddInventory(char1.Inventaire, "Potion de poison")
 			case "3":
+				char1.Skill = SpellBook(char1.Skill, "Boule de feu")
+				fmt.Println("Vous pouvez à présent utiliser le sort Boule de feu ")
+				fmt.Println(char1.Skill)
+			case "4":
 				break
 			}
 		case "3":
+			char1.AccessSkill()
+			fmt.Println("1 = Utiliser boule de feu ")
+			fmt.Println("2 = Quitter la liste de sort")
+			scanner.Scan() // l'utilisateur input dans la console
+			c := scanner.Text()
+			switch c {
+			case "1":
+			case "2":
+				break
+			}
+		case "4":
 			os.Exit(2)
 		}
 	}
