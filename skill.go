@@ -28,11 +28,13 @@ func RemoveDuplicates(tab []string) []string {
 	return list
 }
 
-func (char1 *personnage) SpellBook() {
+func (char1 *personnage) SpellBook(s string) {
 	for _, sort := range char1.Skill {
-		if sort != sort {
-			char1.Skill = AddSkill(char1.Skill, sort)
-			fmt.Println("Vous venez d'apprendre le sort :")
+		if sort != s {
+			char1.Skill = AddSkill(char1.Skill, s)
+			fmt.Println("Vous venez d'apprendre le sort :", s)
+		} else {
+			fmt.Println("Vous connaissez déjà le sort :", s)
 		}
 	}
 }
