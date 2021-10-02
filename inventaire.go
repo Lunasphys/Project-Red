@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func (char1 personnage) AccessInventory() {
+func (char1 *personnage) AccessInventory() {
 	if len(char1.Inventaire) == 0 {
 		fmt.Println("Votre inventaire est vide")
 	}
@@ -23,6 +23,10 @@ func RemoveInventory(tab []string, s string) []string {
 	return tab
 }
 
-func AddInventory(tab []string, s string) []string {
+func (char1 *personnage) AddInventory(tab []string, s string) []string {
+	if len(tab)-1 >= 9 {
+		fmt.Println("Vous n'avez plus de place dans votre inventaire")
+		return tab
+	}
 	return append(tab, s)
 }
