@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
-)	
+)
 
 func (char1 *personnage) TakePot() {
 	for _, objet := range char1.Inventaire {
