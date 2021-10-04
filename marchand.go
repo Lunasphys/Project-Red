@@ -19,3 +19,6 @@ func (char2 *Marchand) Inventaire2() {
 		fmt.Println(char2.Inventaire[i])
 	}
 }
+
+func (char2 *Marchand) Vente() {
+}

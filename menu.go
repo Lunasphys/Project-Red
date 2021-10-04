@@ -151,12 +151,17 @@ func (char1 *personnage) menu(char2 *Marchand) {
 
 			}
 		case "4":
-			fmt.Println("1 = ")
-			fmt.Println("2 = Quitter le forgeron")
+			fmt.Println("1 = Craft un chapeau de l'aventurier ")
+			fmt.Println("2 = Craft une tunique de l'aventurier ")
+			fmt.Println("3 = Craft des bottes de l'aventurier ")
+			fmt.Println("4 = Quitter le forgeron")
 			scanner.Scan() // l'utilisateur input dans la console
 			d := scanner.Text()
 			switch d {
+			case "1":
 			case "2":
+			case "3":
+			case "4":
 				break
 			}
 		case "5":
