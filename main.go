@@ -9,12 +9,19 @@ type personnage struct {
 	Skill                []string
 	Inventaire           []string
 	Argent               int
+	equipement			 []string
 }
 
 type Marchand struct {
 	Nom        string
 	Inventaire []string
 	Argent     int
+}
+
+type equipement struct {
+	Tete	string
+	Torse 	string
+	Bottes 	string
 }
 
 func main() {
