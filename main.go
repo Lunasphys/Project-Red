@@ -25,3 +25,4 @@ func main() {
 	//char1.TakePot()
 	char1.menu(&Marchand{})
 }
+

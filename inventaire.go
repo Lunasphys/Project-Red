@@ -30,3 +30,4 @@ func AddInventory(tab []string, s string) []string {
 	}
 	return append(tab, s)
 }
+
