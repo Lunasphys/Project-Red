@@ -23,7 +23,7 @@ func RemoveInventory(tab []string, s string) []string {
 	return tab
 }
 
-func (char1 *personnage) AddInventory(tab []string, s string) []string {
+func AddInventory(tab []string, s string) []string {
 	if len(tab)-1 >= 9 {
 		fmt.Println("Vous n'avez plus de place dans votre inventaire")
 		return tab

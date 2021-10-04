@@ -27,7 +27,8 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			char1.AccessInventory()
 			fmt.Println("1 = Choisissez une potion de vie")
 			fmt.Println("2 = Choisissez une potion de poison")
-			fmt.Println("3 = Ne rien choisir et quitter")
+			fmt.Println("3 = Apprendre le sort : Boule de feu")
+			fmt.Println("4 = Ne rien choisir et quitter")
 			scanner.Scan() // l'utilisateur input dans la console
 			n := scanner.Text()
 			switch n {
@@ -36,6 +37,8 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			case "2":
 				char1.PoisonPot()
 			case "3":
+				char1.LearnSkill()
+			case "4":
 				break
 			}
 		case "2":
@@ -52,32 +55,51 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			b := scanner.Text()
 			switch b {
 			case "1":
-				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Potion de vie")
-				char1.Argent -= 3
-				fmt.Println(char1.Inventaire)
+				if char1.Argent >= 3 {
+					char1.Inventaire = AddInventory(char1.Inventaire, "Potion de vie")
+					char1.Argent -= 3
+					fmt.Println(char1.Inventaire)
+				} else {
+					fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					
+				}
+
 			case "2":
-				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Potion de poison")
+				char1.Inventaire = AddInventory(char1.Inventaire, "Potion de poison")
 				char1.Argent -= 6
 			case "3":
-				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Boule de feu")
+				char1.Inventaire = AddInventory(char1.Inventaire, "Livre de sort : Boule de feu")
 				char1.Argent -= 25
 				fmt.Println(char1.Inventaire)
 			case "4":
-				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Fourrure de Loup")
+				char1.Inventaire = AddInventory(char1.Inventaire, "Fourrure de Loup")
 				char1.Argent -= 4
 			case "5":
-				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Peau de Troll")
+				char1.Inventaire = AddInventory(char1.Inventaire, "Peau de Troll")
 				char1.Argent -= 7
 			case "6":
-				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Cuir de Sanglier")
+				char1.Inventaire = AddInventory(char1.Inventaire, "Cuir de Sanglier")
 				char1.Argent -= 3
 				fmt.Println(char1.Inventaire)
 			case "7":
-				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Plume de Corbeau")
+				char1.Inventaire = AddInventory(char1.Inventaire, "Plume de Corbeau")
 				char1.Argent -= 1
 			case "8":
 				break
 			}
+		case "3":
+			char1.AccessSkill()
+			fmt.Println("1 = ")
+			fmt.Println("2 = Quitter la liste de sort")
+			scanner.Scan() // l'utilisateur input dans la console
+			c := scanner.Text()
+			switch c {
+			case "1":
+			case "2":
+				break
+
+			}
+
 		case "4":
 			os.Exit(2)
 		}
