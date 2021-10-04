@@ -14,6 +14,9 @@ func (char1 *personnage) AccessSkill() {
 }
 
 func AddSkill(sorts []string, s string) []string {
+	if !Contains(list, sort) {
+		list = append(list, sort)
+	}
 	return append(sorts, s)
 }
 
