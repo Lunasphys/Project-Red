@@ -151,12 +151,69 @@ func (char1 *personnage) menu(char2 *Marchand) {
 
 			}
 		case "4":
-			fmt.Println("1 = ")
-			fmt.Println("2 = Quitter le forgeron")
+			fmt.Println("1 = Craft un chapeau de l'aventurier ")
+			fmt.Println("2 = Craft une tunique de l'aventurier ")
+			fmt.Println("3 = Craft des bottes de l'aventurier ")
+			fmt.Println("4 = Quitter le forgeron")
 			scanner.Scan() // l'utilisateur input dans la console
 			d := scanner.Text()
 			switch d {
+			case "1":
+				if len(char1.Inventaire) < 10 {
+					if char1.Argent >= 5 {
+						if char1.Craft(1, 1, "Plume de Corbeau", "Cuir de Sanglier") {
+							char1.Inventaire = AddInventory(char1.Inventaire, "Chapeau de l'aventurier")
+							char1.Inventaire = RemoveInventory(char1.Inventaire, "Plume de Corbeau")
+							char1.Inventaire = RemoveInventory(char1.Inventaire, "Cuir de Sanglier")
+							char1.Argent -= 5
+							fmt.Println("Vous venez de créer un Chapeau de l'Aventurier")
+						} else {
+							fmt.Println("Vous n'avez pas les ressources nécessaire pour créer cet objet")
+						}
+					} else {
+						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					}
+				} else {
+					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+				}
 			case "2":
+				if len(char1.Inventaire) < 10 {
+					if char1.Argent >= 5 {
+						if char1.Craft(2, 1, "Fourrure de Loup", "Peau de Troll") {
+							char1.Inventaire = AddInventory(char1.Inventaire, "Tunique de l'aventurier")
+							char1.Inventaire = RemoveInventory(char1.Inventaire, "Fourrure de Loup")
+							char1.Inventaire = RemoveInventory(char1.Inventaire, "Fourrure de Loup")
+							char1.Inventaire = RemoveInventory(char1.Inventaire, "Peau de Troll")
+							char1.Argent -= 5
+							fmt.Println("Vous venez de créer une Tunique de l'aventurier")
+						} else {
+							fmt.Println("Vous n'avez pas les ressources nécessaire pour créer cet objet")
+						}
+					} else {
+						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					}
+				} else {
+					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+				}
+			case "3":
+				if len(char1.Inventaire) < 10 {
+					if char1.Argent >= 5 {
+						if char1.Craft(1, 1, "Fourrure de Loup", "Cuir de Sanglier") {
+							char1.Inventaire = AddInventory(char1.Inventaire, "Bottes de l'Aventurier")
+							char1.Inventaire = RemoveInventory(char1.Inventaire, "Fourrure de Loup")
+							char1.Inventaire = RemoveInventory(char1.Inventaire, "Cuir de Sanglier")
+							char1.Argent -= 5
+							fmt.Println("Vous venez de créer des Bottes de l'aventurier")
+						} else {
+							fmt.Println("Vous n'avez pas les ressources nécessaire pour créer cet objet")
+						}
+					} else {
+						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					}
+				} else {
+					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+				}
+			case "4":
 				break
 			}
 		case "5":
