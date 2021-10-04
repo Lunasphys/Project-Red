@@ -55,35 +55,85 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			b := scanner.Text()
 			switch b {
 			case "1":
-				if char1.Argent >= 3 {
-					char1.Inventaire = AddInventory(char1.Inventaire, "Potion de vie")
-					char1.Argent -= 3
-					fmt.Println(char1.Inventaire)
+				if len(char1.Inventaire) < 10 {
+					if char1.Argent >= 3 {
+						char1.Inventaire = AddInventory(char1.Inventaire, "Potion de vie")
+						char1.Argent -= 3
+						fmt.Println(char1.Inventaire)
+					} else {
+						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					}
 				} else {
-					fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
-					
+					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
 				}
-
 			case "2":
-				char1.Inventaire = AddInventory(char1.Inventaire, "Potion de poison")
-				char1.Argent -= 6
+				if len(char1.Inventaire) < 10 {
+					if char1.Argent >= 6 {
+						char1.Inventaire = AddInventory(char1.Inventaire, "Potion de poison")
+						char1.Argent -= 6
+					} else {
+						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					}
+				} else {
+					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+				}
 			case "3":
-				char1.Inventaire = AddInventory(char1.Inventaire, "Livre de sort : Boule de feu")
-				char1.Argent -= 25
-				fmt.Println(char1.Inventaire)
+				if len(char1.Inventaire) < 10 {
+					if char1.Argent >= 25 {
+						char1.Inventaire = AddInventory(char1.Inventaire, "Livre de sort : Boule de feu")
+						char1.Argent -= 25
+						fmt.Println(char1.Inventaire)
+					} else {
+						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					}
+				} else {
+					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+				}
 			case "4":
-				char1.Inventaire = AddInventory(char1.Inventaire, "Fourrure de Loup")
-				char1.Argent -= 4
+				if len(char1.Inventaire) < 10 {
+					if char1.Argent >= 4 {
+						char1.Inventaire = AddInventory(char1.Inventaire, "Fourrure de Loup")
+						char1.Argent -= 4
+					} else {
+						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					}
+				} else {
+					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+				}
 			case "5":
-				char1.Inventaire = AddInventory(char1.Inventaire, "Peau de Troll")
-				char1.Argent -= 7
+				if len(char1.Inventaire) < 10 {
+					if char1.Argent >= 7 {
+						char1.Inventaire = AddInventory(char1.Inventaire, "Peau de Troll")
+						char1.Argent -= 7
+					} else {
+						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					}
+				} else {
+					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+				}
 			case "6":
-				char1.Inventaire = AddInventory(char1.Inventaire, "Cuir de Sanglier")
-				char1.Argent -= 3
-				fmt.Println(char1.Inventaire)
+				if len(char1.Inventaire) < 10 {
+					if char1.Argent >= 3 {
+						char1.Inventaire = AddInventory(char1.Inventaire, "Cuir de Sanglier")
+						char1.Argent -= 3
+						fmt.Println(char1.Inventaire)
+					} else {
+						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					}
+				} else {
+					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+				}
 			case "7":
-				char1.Inventaire = AddInventory(char1.Inventaire, "Plume de Corbeau")
-				char1.Argent -= 1
+				if len(char1.Inventaire) < 10 {
+					if char1.Argent >= 1 {
+						char1.Inventaire = AddInventory(char1.Inventaire, "Plume de Corbeau")
+						char1.Argent -= 1
+					} else {
+						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+					}
+				} else {
+					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+				}
 			case "8":
 				break
 			}
@@ -99,7 +149,6 @@ func (char1 *personnage) menu(char2 *Marchand) {
 				break
 
 			}
-
 		case "4":
 			os.Exit(2)
 		}
