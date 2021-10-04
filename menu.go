@@ -40,19 +40,42 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			}
 		case "2":
 			char2.Inventaire2()
-			fmt.Println("1 = Acheter une potion de vie")
-			fmt.Println("2 = Acheter une potion de poison")
-			fmt.Println("3 = Acheter Livre de sort : Boule de feu")
-			fmt.Println("4 = Quitter l'inventaire du marchand")
+			fmt.Println("1 = Acheter une potion de vie (3 pièces d'or)")
+			fmt.Println("2 = Acheter une potion de poison (6 pièces d'or)")
+			fmt.Println("3 = Acheter Livre de sort : Boule de feu (25 pièces d'or)")
+			fmt.Println("4 = Acheter une Fourrure de Loup (4 pièces d'or)")
+			fmt.Println("5 = Acheter une Peau de Troll (7 pièces d'or)")
+			fmt.Println("6 = Acheter une Cuir de Sanglier (3 pièces d'or)")
+			fmt.Println("7 = Acheter une Plume de Corbeau (6 pièces d'or)")
+			fmt.Println("8 = Quitter l'inventaire du marchand")
 			scanner.Scan() // l'utilisateur input dans la console
 			b := scanner.Text()
 			switch b {
 			case "1":
 				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Potion de vie")
+				char1.Argent -= 3
 				fmt.Println(char1.Inventaire)
 			case "2":
 				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Potion de poison")
+				char1.Argent -= 6
+			case "3":
+				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Boule de feu")
+				char1.Argent -= 25
+				fmt.Println(char1.Inventaire)
 			case "4":
+				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Fourrure de Loup")
+				char1.Argent -= 4
+			case "5":
+				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Peau de Troll")
+				char1.Argent -= 7
+			case "6":
+				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Cuir de Sanglier")
+				char1.Argent -= 3
+				fmt.Println(char1.Inventaire)
+			case "7":
+				char1.Inventaire = char1.AddInventory(char1.Inventaire, "Plume de Corbeau")
+				char1.Argent -= 1
+			case "8":
 				break
 			}
 		case "4":
