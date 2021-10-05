@@ -19,7 +19,6 @@ func (char1 *personnage) EquipHead(s string) string {
 		if tete == s {
 			char1.Equipement.Tete = s
 			fmt.Println("Vous venez d'équiper : ", s)
-			char1.Point_de_vie_max += 10
 		}
 	}
 	if char1.Equipement.Tete != s {
@@ -33,7 +32,6 @@ func (char1 *personnage) EquipChest(s string) string {
 		if tete == s {
 			char1.Equipement.Torse = s
 			fmt.Println("Vous venez d'équiper : ", s)
-			char1.Point_de_vie_max += 25
 		}
 	}
 	fmt.Println("Vous n'avez rien à équiper")
@@ -45,7 +43,6 @@ func (char1 *personnage) EquipBoots(s string) string {
 		if tete == s {
 			char1.Equipement.Bottes = s
 			fmt.Println("Vous venez d'équiper : ", s)
-			char1.Point_de_vie_max += 15
 		}
 	}
 	fmt.Println("Vous n'avez rien à équiper")
