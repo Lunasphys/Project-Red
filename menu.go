@@ -227,13 +227,11 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			e := scanner.Text()
 			switch e {
 			case "1":
-				if char1.Equipement.Tete == "Chapeau de l'aventurier" {
-					char1.Equipement.Tete = ""
-					AddInventory(char1.Inventaire, "Chapeau de l'aventurier")
-					char1.Point_de_vie_max -= 10
+				var current string
+				var new string
+				if current = char1.Equipement.Tete  {
+					
 				}
-				char1.EquipHead("Chapeau de l'aventurier")
-				char1.Inventaire = RemoveInventory(char1.Inventaire, "Chapeau de l'aventurier")
 
 			case "2":
 				if char1.Equipement.Tete == "Tunique de l'aventurier" {
