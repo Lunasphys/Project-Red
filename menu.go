@@ -13,7 +13,8 @@ func (char1 *personnage) menu(char2 *Marchand) {
 		fmt.Println("2 = Marchand")
 		fmt.Println("3 = Acceder a la liste de sorts")
 		fmt.Println("4 = Acceder au menu du forgeron")
-		fmt.Println("5 = Quitter")
+		fmt.Println("5 = Acceder a l'équipement")
+		fmt.Println("6 = Quitter")
 		// créer une var scanner qui va lire ce que l'utilisateur va écrire
 		scanner := bufio.NewScanner(os.Stdin)
 
@@ -166,7 +167,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 							char1.Inventaire = RemoveInventory(char1.Inventaire, "Plume de Corbeau")
 							char1.Inventaire = RemoveInventory(char1.Inventaire, "Cuir de Sanglier")
 							char1.Argent -= 5
-							fmt.Println("Vous venez de créer un Chapeau de l'Aventurier")
+							fmt.Println("Vous venez de créer un Chapeau de l'aventurier")
 						} else {
 							fmt.Println("Vous n'avez pas les ressources nécessaire pour créer cet objet")
 						}
@@ -217,6 +218,45 @@ func (char1 *personnage) menu(char2 *Marchand) {
 				break
 			}
 		case "5":
+			char1.ShowEquipement()
+			fmt.Println("1 = Équiper un chapeau de l'aventurier")
+			fmt.Println("2 = Équiper une tunique de l'aventurier")
+			fmt.Println("3 = Équiper des bottes de l'aventurier")
+			fmt.Println("4 = Quitter le menu de l'équipement")
+			scanner.Scan() // l'utilisateur input dans la console
+			e := scanner.Text()
+			switch e {
+			case "1":
+				if char1.Equipement.Tete == "Chapeau de l'aventurier" {
+					char1.Equipement.Tete = ""
+					AddInventory(char1.Inventaire, "Chapeau de l'aventurier")
+					char1.Point_de_vie_max -= 10
+				}
+				char1.EquipHead("Chapeau de l'aventurier")
+				char1.Inventaire = RemoveInventory(char1.Inventaire, "Chapeau de l'aventurier")
+
+			case "2":
+				if char1.Equipement.Tete == "Tunique de l'aventurier" {
+					char1.Equipement.Tete = ""
+					AddInventory(char1.Inventaire, "Tunique de l'aventurier")
+					char1.Point_de_vie_max -= 25
+				}
+				char1.EquipChest("Tunique de l'aventurier")
+				char1.Inventaire = (RemoveInventory(char1.Inventaire, "Tunique de l'aventurier"))
+
+			case "3":
+				if char1.Equipement.Tete == "Botte de l'aventurier" {
+					char1.Equipement.Tete = ""
+					AddInventory(char1.Inventaire, "Botte de l'aventurier")
+					char1.Point_de_vie_max -= 15
+				} else {
+					char1.EquipBoots("Botte de l'avneturier")
+					char1.Inventaire = (RemoveInventory(char1.Inventaire, "Botte de l'aventurier"))
+				}
+			case "4":
+				break
+			}
+		case "6":
 			os.Exit(2)
 		}
 	}
