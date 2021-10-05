@@ -9,7 +9,7 @@ type personnage struct {
 	Skill                []string
 	Inventaire           []string
 	Argent               int
-	equipement			 []string
+	Equipement			 []string
 }
 
 type Marchand struct {
