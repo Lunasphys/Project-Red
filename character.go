@@ -16,7 +16,7 @@ func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie
 func (char1 *personnage) DisplayInfo() {
 	fmt.Println(char1.Nom)
 	fmt.Println(char1.Classe)
-	fmt.Println(char1.Niveau)
+	fmt.Println("Vous etes level", ":", char1.Niveau)
 	fmt.Println("PV max", ":", char1.Point_de_vie_max)
 	fmt.Println("PV restant", ":", char1.Point_de_vie_restant)
 	fmt.Println("Liste des sorts", ":", char1.Skill)

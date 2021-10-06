@@ -237,7 +237,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				}
 			case "8":
-				return 
+				return
 			}
 		case "3":
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -388,14 +388,10 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			case "1":
 				char1.RemoveItem(char1.Equipement.Tete)
 				char1.AddItem(chapeauAventurier)
-<<<<<<< HEAD
-				fmt.Println(char1.Inventaire)
-=======
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println(char1.Inventaire)
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
->>>>>>> 40d2e224799a34bae8a150197bc985e0aa639fb4
 			case "2":
 				char1.RemoveItem(char1.Equipement.Torse)
 				char1.AddItem(tuniqueAventurier)
