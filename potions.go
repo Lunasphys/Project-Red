@@ -23,7 +23,7 @@ func (char1 *personnage) TakePot() {
 	if Contains(char1.Inventaire, potionDeVie) {
 		if char1.Point_de_vie_restant < char1.Point_de_vie_max {
 			char1.Point_de_vie_restant += 150
-			fmt.Println("Vous avez utiliser une potion de vie")
+			fmt.Println("Vous avez utilisé une potion de vie")
 			char1.Inventaire = RemoveInventory(char1.Inventaire, potionDeVie)
 		}
 	}
@@ -31,7 +31,7 @@ func (char1 *personnage) TakePot() {
 		char1.Point_de_vie_restant = char1.Point_de_vie_max
 
 	}
-	fmt.Println(char1.Point_de_vie_restant, char1.Point_de_vie_max)
+	fmt.Println("PV :", char1.Point_de_vie_restant, "/", char1.Point_de_vie_max)
 	fmt.Println(char1.Inventaire)
 }
 
@@ -52,6 +52,6 @@ func (char1 *personnage) PoisonPot() {
 		fmt.Println("L'effet de la potion de poison s'estompe")
 		char1.Inventaire = RemoveInventory(char1.Inventaire, potionDePoison)
 	}
-	fmt.Println(char1.Point_de_vie_restant, "/", char1.Point_de_vie_max)
+	fmt.Println("PV :", char1.Point_de_vie_restant, "/", char1.Point_de_vie_max)
 
 }

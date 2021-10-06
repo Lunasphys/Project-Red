@@ -12,7 +12,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	for {
 		fmt.Println("0 = Afficher les informations du personnages")
-		fmt.Println("1 = Acceder au menue de l'inventaire")
+		fmt.Println("1 = Acceder au menu de l'inventaire")
 		fmt.Println("2 = Marchand")
 		fmt.Println("3 = Acceder a la liste de sorts")
 		fmt.Println("4 = Acceder au menu du forgeron")
@@ -75,16 +75,24 @@ func (char1 *personnage) menu(char2 *Marchand) {
 						char1.Inventaire = AddInventory(char1.Inventaire, "Potion de vie")
 						char1.Argent -= 3
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println("Vous venez de dépenser 3 pièces d'or")
+						fmt.Println("Vous venez d'acheter une potion de vie et vous avez dépensé 3 pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println(char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println(char1.Inventaire)
 					} else {
+						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
+						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					}
 				} else {
+					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+					fmt.Println(char1.Inventaire)
+					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				}
 			case "2":
 				if len(char1.Inventaire) < 10 {
@@ -92,15 +100,15 @@ func (char1 *personnage) menu(char2 *Marchand) {
 						char1.Inventaire = AddInventory(char1.Inventaire, "Potion de poison")
 						char1.Argent -= 6
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println("Vous venez de dépenser 6 pièces d'or")
+						fmt.Println("Vous venez d'acheter une potion de poison et vous avez dépensé 6 pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println(char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					} else {
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println(char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
 					}
@@ -119,7 +127,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 						char1.Argent -= 25
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous venez d'acheter le Livre de sort : Boule de feu et avez dépensé 25 pièces d'or")
-						fmt.Println(char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println(char1.Inventaire)
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -127,7 +135,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println(char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					}
 				} else {
@@ -144,7 +152,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 						char1.Argent -= 4
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous venez d'acheter une Fourrure de Loup et avez dépensé 4 pièces d'or")
-						fmt.Println(char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println(char1.Inventaire)
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -152,7 +160,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println(char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					}
 				} else {
@@ -169,7 +177,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 						char1.Argent -= 7
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous venez d'acheter une Peau de Troll et avez dépensé 7 pièces d'or")
-						fmt.Println(char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println(char1.Inventaire)
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -177,7 +185,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println(char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					}
 				} else {
@@ -194,7 +202,8 @@ func (char1 *personnage) menu(char2 *Marchand) {
 						char1.Argent -= 3
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous venez d'acheter un Cuir de Sanglier et avez dépensé 3 pièces d'or")
-						fmt.Println(char1.Argent)
+						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println(char1.Inventaire)
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -202,7 +211,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println(char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					}
 				} else {
@@ -214,19 +223,19 @@ func (char1 *personnage) menu(char2 *Marchand) {
 				}
 			case "7":
 				if len(char1.Inventaire) < 10 {
-					if char1.Argent >= 1 {
+					if char1.Argent >= 6 {
 						char1.Inventaire = AddInventory(char1.Inventaire, "Plume de Corbeau")
-						char1.Argent -= 1
+						char1.Argent -= 6
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println("Vous avez dépensé 1 pièce d'or")
+						fmt.Println("Vous venez d'acheter une Plume de Corbeau et vous avez dépensé 6 pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println("")
+						fmt.Println("Il vous reste :", char1.Argent, "pièces")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					} else {
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 						fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-						fmt.Println("Il vous reste :", char1.Argent)
+						fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 						fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					}
 				} else {
@@ -237,7 +246,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				}
 			case "8":
-				return 
+				break
 			}
 		case "3":
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -388,14 +397,10 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			case "1":
 				char1.RemoveItem(char1.Equipement.Tete)
 				char1.AddItem(chapeauAventurier)
-<<<<<<< HEAD
-				fmt.Println(char1.Inventaire)
-=======
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println(char1.Inventaire)
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
->>>>>>> 40d2e224799a34bae8a150197bc985e0aa639fb4
 			case "2":
 				char1.RemoveItem(char1.Equipement.Torse)
 				char1.AddItem(tuniqueAventurier)
