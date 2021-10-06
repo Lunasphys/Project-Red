@@ -39,3 +39,4 @@ func (char1 *personnage) RemoveItem(item string) {
 		char1.Inventaire = AddInventory(char1.Inventaire, bottesAventurier)
 	}
 }
+
