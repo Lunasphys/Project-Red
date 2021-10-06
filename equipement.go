@@ -18,10 +18,12 @@ func (char1 *personnage) EquipHead(s string) string {
 	for _, tete := range char1.Inventaire {
 		if tete == s {
 			char1.Equipement.Tete = s
+			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous venez d'équiper : ", s)
 		}
 	}
 	if char1.Equipement.Tete != s {
+		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Vous n'avez rien à équiper")
 	}
 	return char1.Equipement.Tete
@@ -31,9 +33,11 @@ func (char1 *personnage) EquipChest(s string) string {
 	for _, tete := range char1.Inventaire {
 		if tete == s {
 			char1.Equipement.Torse = s
+			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous venez d'équiper : ", s)
 		}
 	}
+	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("Vous n'avez rien à équiper")
 	return char1.Equipement.Torse
 }
@@ -42,9 +46,11 @@ func (char1 *personnage) EquipBoots(s string) string {
 	for _, tete := range char1.Inventaire {
 		if tete == s {
 			char1.Equipement.Bottes = s
+			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous venez d'équiper : ", s)
 		}
 	}
+	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("Vous n'avez rien à équiper")
 	return char1.Equipement.Tete
 }
