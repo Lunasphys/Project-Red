@@ -41,3 +41,4 @@ func (char1 *personnage) RemoveItem(item string) {
 		AddInventory(char1.Inventaire, bottesAventurier)
 	}
 }
+
