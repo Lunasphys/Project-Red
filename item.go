@@ -4,6 +4,8 @@ const (
 	chapeauAventurier = "Chapeau de l'aventurier"
 	tuniqueAventurier = "Tunique de l'aventurier"
 	bottesAventurier  = "Bottes de l'aventurier"
+	potionDeVie       = "Potion de vie"
+	potionDePoison    = "Potion de poison"
 )
 
 func (char1 *personnage) AddItem(item string) {

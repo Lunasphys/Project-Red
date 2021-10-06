@@ -229,10 +229,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 			case "1":
 				char1.RemoveItem(char1.Equipement.Tete)
 				char1.AddItem(chapeauAventurier)
-				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx")
 				fmt.Println(char1.Inventaire)
-				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx")
-
 			case "2":
 				if char1.Equipement.Tete == "Tunique de l'aventurier" {
 					char1.Equipement.Tete = ""

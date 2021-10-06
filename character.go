@@ -17,11 +17,11 @@ func (char1 *personnage) DisplayInfo() {
 	fmt.Println(char1.Nom)
 	fmt.Println(char1.Classe)
 	fmt.Println(char1.Niveau)
-	fmt.Println(char1.Point_de_vie_max)
-	fmt.Println(char1.Point_de_vie_restant)
-	fmt.Println(char1.Skill)
-	fmt.Println(char1.Inventaire)
-	fmt.Println(char1.Argent)
+	fmt.Println("PV max", ":", char1.Point_de_vie_max)
+	fmt.Println("PV restant", ":", char1.Point_de_vie_restant)
+	fmt.Println("Liste des sorts", ":", char1.Skill)
+	fmt.Println("Vous détenez", ":", char1.Inventaire)
+	fmt.Println("Vous avez", char1.Argent, "Pièce d'or")
 }
 
 func (char1 *personnage) Dead() {
