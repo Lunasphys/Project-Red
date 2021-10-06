@@ -237,7 +237,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				}
 			case "8":
-				break
+				return 
 			}
 		case "3":
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
