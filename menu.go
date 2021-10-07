@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func (char1 *personnage) menu(char2 *Marchand) {
+func (char1 *personnage) menu(char2 *Marchand, char3 *monstre) {
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("Que souhaitez-vous faire ?")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -419,6 +419,7 @@ func (char1 *personnage) menu(char2 *Marchand) {
 				break
 			}
 		case "6":
+			TrainingFight(char1, char3)
 			fmt.Println("1 = ")
 			fmt.Println("2 = Quitter l'entrainement")
 			scanner.Scan() // l'utilisateur input dans la console
