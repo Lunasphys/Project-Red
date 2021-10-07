@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-package main
-
-func GoblinPattern() {
-
-}
-
-func Combat() {
-=======
 package main 
 
 import "fmt"
@@ -25,6 +16,6 @@ func TrainingFight(char1 *personnage, char3 *monstre) { // Initialisation combat
 }
 
 func (char3 *monstre) GoblinPattern() {
->>>>>>> f1f3750069a637182c8dde5e03cfb90f2d8bdb42
 
-}
+	
+} 
