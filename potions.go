@@ -22,7 +22,7 @@ func (char1 *personnage) TakePot() {
 	}
 	if Contains(char1.Inventaire, potionDeVie) {
 		if char1.Point_de_vie_restant < char1.Point_de_vie_max {
-			char1.Point_de_vie_restant += 150
+			char1.Point_de_vie_restant += 25
 			fmt.Println("Vous avez utilisé une potion de vie")
 			char1.Inventaire = RemoveInventory(char1.Inventaire, potionDeVie)
 		}
