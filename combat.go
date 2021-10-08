@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func TrainingFight(char1 *personnage, char3 *monstre) { // Initialisation combat d'entrainement
 	fmt.Println(char1.Nom, " engage le combat d'entrainement")
@@ -9,18 +13,21 @@ func TrainingFight(char1 *personnage, char3 *monstre) { // Initialisation combat
 	for count := 1; ; count++ { // Condition de fin de combat
 		if char1.Point_de_vie_restant > 0 || char3.Point_de_vie_restant > 0 {
 			fmt.Println("======== Tour ", count, " ========") // Initialisation nombre de tours
-			CharTurn(char1, char3)
-			//
 			GoblinPattern(char1, char3, count)
+			CharTurn(char1, char3)
 		}
-		if char3.Point_de_vie_restant >= 0 {
+		if char3.Point_de_vie_restant <= 0 {
+			fmt.Println("Le gobelin est mort")
 			fmt.Println("Vous avez gagné l'entrainement")
-		}
-		if char1.Point_de_vie_restant >= 0 {
-			fmt.Println("Vous avez perdu l'entrainement")
+			if char1.Point_de_vie_restant <= 0 {
+				char1.Dead()
+				fmt.Println("Vous avez perdu l'entrainement")
+			}
+			break
 
 		}
 	}
+
 }
 
 func GoblinPattern(char1 *personnage, char3 *monstre, count int) {
@@ -38,7 +45,7 @@ func GoblinPattern(char1 *personnage, char3 *monstre, count int) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Le gobelin a infligé", (char3.Point_d_attaque), "points de dégats à", (char1.Nom))
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants")
+			fmt.Println("Il reste au", char1.Nom, char1.Point_de_vie_restant, "/", char1.Point_de_vie_max, "PV restants")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		}
 	}
@@ -63,23 +70,73 @@ func CharTurn(char1 *personnage, char3 *monstre) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Choisissez une attaque")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-            fmt.Println("1 = Attaque simple")
-            fmt.Println("2 = Coup de poing")
-            fmt.Println("3 = Boule de feu")
-            scanner.Scan() // l'utilisateur input dans la console
+			fmt.Println("1 = Attaque simple")
+			fmt.Println("2 = Coup de poing")
+			fmt.Println("3 = Boule de feu")
+			scanner.Scan() // l'utilisateur input dans la console
 			m := scanner.Text()
 			switch m {
 			case "1":
-				char1.TakePot()
-                fmt.Println("Vous avez décidé de réaliser une attaque simple")
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				fmt.Println("Vous avez décidé de réaliser une attaque simple")
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char3.Point_de_vie_restant -= char1.Point_d_attaque
+				fmt.Println(char1.Nom, " a infligé", (char1.Point_d_attaque), "points de dégats à", (char3.Nom))
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants")
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+
 			case "2":
-				char1.PoisonPot()
-                fmt.Println("Vous avez décidé d'utiliser Coup de poing")
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				fmt.Println("Vous avez décidé d'utiliser Coup de poing")
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char3.Point_de_vie_restant -= 8
+				fmt.Println(char1.Nom, " a infligé 8 points de dégats à", (char3.Nom))
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants")
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			case "3":
-				char1.LearnSkill()
-				fmt.Println(char1.Skill)
+				if Contains(char1.Skill, "Boule de feu") {
+					char3.Point_de_vie_restant -= 18
+					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+					fmt.Println(char1.Nom, " a infligé 18 points de dégats à", (char3.Nom))
+					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+					fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants")
+					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				} else {
+					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+					fmt.Println("Vous n'avez pas appris ce sort")
+					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				}
 			case "4":
 				break
 			}
-			
+
 		case "2":
+			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			fmt.Println("Que souhaitez-vous faire ?")
+			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			char1.AccessInventory()
+			fmt.Println("1 = Choisissez une potion de vie")
+			fmt.Println("2 = Choisissez une potion de poison")
+			fmt.Println("3 = Apprendre le sort : Boule de feu")
+			fmt.Println("4 = Ne rien choisir et quitter")
+			scanner.Scan() // l'utilisateur input dans la console
+			p := scanner.Text()
+			switch p {
+			case "1":
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char1.TakePot()
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			case "2":
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char1.PoisonPot()
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			case "3":
+				break
+			}
+		case "3":
+			os.Exit(2)
+		}
+	}
+}

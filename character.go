@@ -27,10 +27,15 @@ func (char1 *personnage) DisplayInfo() {
 }
 
 func (char1 *personnage) Dead() {
-	for char1.Point_de_vie_restant == 0 {
+	if char1.Point_de_vie_restant == 0 {
 		fmt.Println("Vous etes mort")
 		char1.Point_de_vie_restant += (char1.Point_de_vie_max / 2)
 		fmt.Println("Vous etes revenue a la vie avec 50% de vos point de vie restant")
-		break
+	}
+}
+
+func (char3 *monstre) Dead2() {
+	if char3.Point_de_vie_restant == 0 {
+		fmt.Println("Le gobelin est mort")
 	}
 }

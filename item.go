@@ -6,6 +6,7 @@ const (
 	bottesAventurier  = "Bottes de l'aventurier"
 	potionDeVie       = "Potion de vie"
 	potionDePoison    = "Potion de poison"
+	bouleDeFeu        = "Boule de feu"
 )
 
 func (char1 *personnage) AddItem(item string) {
@@ -39,4 +40,3 @@ func (char1 *personnage) RemoveItem(item string) {
 		char1.Inventaire = AddInventory(char1.Inventaire, bottesAventurier)
 	}
 }
-
