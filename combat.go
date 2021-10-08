@@ -22,7 +22,6 @@ func TrainingFight(char1 *personnage, char3 *monstre, char2 *Marchand) { // Init
 }
 
 func GoblinPattern(char1 *personnage, char3 *monstre, char2 *Marchand) {
-
 	for {
 		if count%3 == 0 {
 			char1.Point_de_vie_restant -= (char3.Point_d_attaque * 2)
@@ -31,8 +30,13 @@ func GoblinPattern(char1 *personnage, char3 *monstre, char2 *Marchand) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Il vous reste :", char1.Point_de_vie_restant, "/", char1.Point_de_vie_max, "PV restants")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			CharTurn(char1, char3, char2)
-
+			if char1.Point_de_vie_restant <= 0 {
+				char1.Dead(char3)
+				char1.menu(char2, char3)
+			} else {
+				fmt.Println("======== Tour ", count, " ========")
+				CharTurn(char1, char3, char2)
+			}
 		} else {
 			char1.Point_de_vie_restant -= char3.Point_d_attaque
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -41,8 +45,8 @@ func GoblinPattern(char1 *personnage, char3 *monstre, char2 *Marchand) {
 			fmt.Println("Il reste au", char1.Nom, char1.Point_de_vie_restant, "/", char1.Point_de_vie_max, "PV restants")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			if char1.Point_de_vie_restant <= 0 {
-				char1.Dead()
-				os.Exit(1)
+				char1.Dead(char3)
+				char1.menu(char2, char3)
 			} else {
 				fmt.Println("======== Tour ", count, " ========")
 				CharTurn(char1, char3, char2)
@@ -129,6 +133,9 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) {
 				} else {
 					GoblinPattern(char1, char3, char2)
 				}
+			case "4":
+				break
+			}
 		case "2":
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Que souhaitez-vous faire ?")
@@ -136,25 +143,82 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) {
 			char1.AccessInventory()
 			fmt.Println("1 = Choisissez une potion de vie")
 			fmt.Println("2 = Choisissez une potion de poison")
-			fmt.Println("3 = Apprendre le sort : Boule de feu")
-			fmt.Println("4 = Ne rien choisir et quitter")
+			fmt.Println("3 = Envoyer une potion de vie sur le Gobelin")
+			fmt.Println("4 = Envoyer une potion de poison sur le Gobelin")
+			fmt.Println("5 = Apprendre le sort : Boule de feu")
+			fmt.Println("6 = Ne rien choisir et quitter")
 			scanner.Scan() // l'utilisateur input dans la console
 			p := scanner.Text()
 			switch p {
 			case "1":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char1.TakePot()
+				if Contains(char1.Inventaire, potionDeVie) {
+					char1.TakePot()
+					GoblinPattern(char1, char3, char2)
+				} else {
+					fmt.Println("Vous n'avez pas de potion de vie")
+				}
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			case "2":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				char1.PoisonPot()
+				fmt.Println("Vous avez un QI négatif")
+				if char3.Point_de_vie_restant <= 0 {
+					char3.Dead2(char1)
+					count = 1
+					char1.menu(char2, char3)
+				} else {
+					GoblinPattern(char1, char3, char2)
+				}
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			case "3":
-				GoblinPattern(char1, char3, char2)
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				if Contains(char1.Inventaire, potionDeVie) {
+					char1.ThrowLifePot(char3)
+					GoblinPattern(char1, char3, char2)
+				} else {
+					fmt.Println("Vous n'avez pas de potion de vie")
+				}
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			case "4":
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				if Contains(char1.Inventaire, potionDePoison) {
+					char1.ThrowPoisonPot(char3)
+					if char3.Point_de_vie_restant <= 0 {
+						char3.Dead2(char1)
+						count = 1
+						char1.menu(char2, char3)
+					} else {
+						GoblinPattern(char1, char3, char2)
+					}
+				}
+				if !Contains(char1.Inventaire, potionDePoison) {
+					fmt.Println("Vous n'avez pas de potion de poison")
+					count--
+					CharTurn(char1, char3, char2)
+				}
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			case "5":
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char1.LearnSkill()
+				fmt.Println("Sorts appris :")
+				fmt.Println(char1.Skill)
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				if Contains(char1.Skill, bouleDeFeu) {
+					fmt.Println(char1.Nom, "a appris Boule de feu")
+					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				} else {
+					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+					fmt.Println("Vous n'avez pas acheté le Livre de sort : Boule de feu au marchand")
+				}
+			case "6":
+				break
 			}
 		case "3":
-			os.Exit(45434)
-			}
+			char3.Init("Gobelin d'entrainement", 40, 40, 5)
+			char1.Init("Lunasphys", "Archer", 20, 50, 30, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
+			count = 1
+			char1.menu(char2, char3)
 		}
 	}
 }

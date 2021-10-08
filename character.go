@@ -26,10 +26,12 @@ func (char1 *personnage) DisplayInfo() {
 	fmt.Println("Vous avez", char1.Argent, "Pièces d'or")
 }
 
-func (char1 *personnage) Dead() {
+func (char1 *personnage) Dead(char3 *monstre) {
 	fmt.Println("Vous etes mort")
 	char1.Point_de_vie_restant += (char1.Point_de_vie_max / 2)
 	fmt.Println("Vous etes revenue a la vie avec 50% de vos point de vie restant")
+	char3.Init("Gobelin d'entrainement", 40, 40, 5)
+	char1.Init("Lunasphys", "Archer", 20, 50, 30, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
 }
 
 func (char3 *monstre) Dead2(char1 *personnage) {

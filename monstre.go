@@ -16,8 +16,3 @@ func (char1 *monstre) DisplayInfo() {
 	fmt.Println(char1.Point_d_attaque)
 }
 
-func (char1 *monstre) Dead() {
-	if char1.Point_de_vie_restant == 0 {
-		fmt.Println("Vous avez vaincu le gobelin")
-	}
-}
