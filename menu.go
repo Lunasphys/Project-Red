@@ -227,14 +227,11 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre) {
 			}
 		case "6":
 			TrainingFight(char1, char3, char2)
-			fmt.Println("1 = ")
-			fmt.Println("2 = Quitter l'entrainement")
+			fmt.Println("1 = Quitter l'entrainement")
 			scanner.Scan() // l'utilisateur input dans la console
 			f := scanner.Text()
 			switch f {
 			case "1":
-
-			case "2":
 				break
 			}
 
