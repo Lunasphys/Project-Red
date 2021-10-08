@@ -13,8 +13,8 @@ func TrainingFight(char1 *personnage, char3 *monstre) { // Initialisation combat
 	for count := 1; ; count++ { // Condition de fin de combat
 		if char1.Point_de_vie_restant > 0 || char3.Point_de_vie_restant > 0 {
 			fmt.Println("======== Tour ", count, " ========") // Initialisation nombre de tours
+			CharTurn(char1, char3, count)
 			GoblinPattern(char1, char3, count)
-			CharTurn(char1, char3)
 		}
 		if char3.Point_de_vie_restant <= 0 {
 			fmt.Println("Le gobelin est mort")
@@ -51,7 +51,7 @@ func GoblinPattern(char1 *personnage, char3 *monstre, count int) {
 	}
 }
 
-func CharTurn(char1 *personnage, char3 *monstre) {
+func CharTurn(char1 *personnage, char3 *monstre, count int) {
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("Que souhaitez-vous faire ?")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -109,7 +109,7 @@ func CharTurn(char1 *personnage, char3 *monstre) {
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				}
 			case "4":
-				break
+				GoblinPattern(char1, char3, count)
 			}
 
 		case "2":
@@ -133,7 +133,7 @@ func CharTurn(char1 *personnage, char3 *monstre) {
 				char1.PoisonPot()
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			case "3":
-				break
+				GoblinPattern(char1, char3, count)
 			}
 		case "3":
 			os.Exit(2)
