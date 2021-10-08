@@ -27,15 +27,14 @@ func (char1 *personnage) DisplayInfo() {
 }
 
 func (char1 *personnage) Dead() {
-	if char1.Point_de_vie_restant == 0 {
-		fmt.Println("Vous etes mort")
-		char1.Point_de_vie_restant += (char1.Point_de_vie_max / 2)
-		fmt.Println("Vous etes revenue a la vie avec 50% de vos point de vie restant")
-	}
+	fmt.Println("Vous etes mort")
+	char1.Point_de_vie_restant += (char1.Point_de_vie_max / 2)
+	fmt.Println("Vous etes revenue a la vie avec 50% de vos point de vie restant")
 }
 
-func (char3 *monstre) Dead2() {
-	if char3.Point_de_vie_restant == 0 {
-		fmt.Println("Le gobelin est mort")
-	}
+func (char3 *monstre) Dead2(char1 *personnage) {
+	fmt.Println("Le gobelin est mort")
+	char3.Init("Gobelin d'entrainement", 40, 40, 5)
+	fmt.Println("Un nouveau Gobelin est disponible")
+	char1.Init("Lunasphys", "Archer", 20, 50, 30, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
 }
