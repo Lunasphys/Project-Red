@@ -125,6 +125,8 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) {
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					fmt.Println("Vous n'avez pas appris ce sort")
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+					count--
+					CharTurn(char1, char3, char2)
 				}
 				if char3.Point_de_vie_restant <= 0 {
 					char3.Dead2(char1)
@@ -206,6 +208,7 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				if Contains(char1.Skill, bouleDeFeu) {
 					fmt.Println(char1.Nom, "a appris Boule de feu")
+					GoblinPattern(char1, char3, char2)
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				} else {
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
