@@ -81,12 +81,14 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 
 			}
 		} else {
@@ -95,6 +97,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println(char1.Inventaire)
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			char2.returnMarchand(char1)
 
 		}
 	case "3":
@@ -108,12 +111,14 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println(char1.Inventaire)
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -121,6 +126,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println(char1.Inventaire)
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			char2.returnMarchand(char1)
 		}
 	case "4":
 		if len(char1.Inventaire) < 10 {
@@ -133,12 +139,14 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println(char1.Inventaire)
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -146,6 +154,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println(char1.Inventaire)
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			char2.returnMarchand(char1)
 		}
 	case "5":
 		if len(char1.Inventaire) < 10 {
@@ -158,12 +167,14 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println(char1.Inventaire)
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -171,6 +182,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println(char1.Inventaire)
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			char2.returnMarchand(char1)
 		}
 	case "6":
 		if len(char1.Inventaire) < 10 {
@@ -184,12 +196,14 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println(char1.Inventaire)
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -197,6 +211,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println(char1.Inventaire)
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			char2.returnMarchand(char1)
 		}
 	case "7":
 		if len(char1.Inventaire) < 10 {
@@ -208,12 +223,14 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -221,6 +238,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println(char1.Inventaire)
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			char2.returnMarchand(char1)
 		}
 	case "8":
 		break
