@@ -32,7 +32,7 @@ func (char1 *personnage) DisplayInfo() { /* Cette fonction permet d'afficher les
 	fmt.Println("Vous avez", char1.Argent, "Pièces d'or")
 }
 
-func (char1 *personnage) Dead(char3 *monstre) { /* Permet au perso principal de mourir pendant le combat d'entrainement et de réinitialiser ses informations principales à la fin
+func (char1 *personnage) Dead(char3 *monstre) { /* Permet au perso principal de mourir pendant le combat d'entrainement et de réinitialiser ses stats de base à la fin du combat
 	 */
 	fmt.Println("Vous etes mort")
 	char1.Point_de_vie_restant += (char1.Point_de_vie_max / 2)
@@ -41,7 +41,7 @@ func (char1 *personnage) Dead(char3 *monstre) { /* Permet au perso principal de 
 	char1.Init("Lunasphys", "Archer", 20, 50, 30, 50, 30, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
 }
 
-func (char3 *monstre) Dead2(char1 *personnage) { // Permet au gobelin de mourir et de réinitialiser ses PVS à la fin du combat
+func (char3 *monstre) Dead2(char1 *personnage) { // Permet au gobelin de mourir et de réinitialiser ses stats de base à la fin du combat
 	fmt.Println("Le gobelin est mort")
 	char3.Init("Gobelin d'entrainement", 40, 40, 5)
 	fmt.Println("Un nouveau Gobelin est disponible")
