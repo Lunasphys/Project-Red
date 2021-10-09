@@ -24,7 +24,7 @@ func (char1 *personnage) EquipHead(s string) string {
 			char1.Equipement.Tete = s
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous venez d'équiper : ", s)
-		} else if tete != s {
+		} else if char1.Equipement.Tete == s {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous n'avez rien à équiper")
 		}
@@ -40,7 +40,7 @@ func (char1 *personnage) EquipChest(s string) string {
 			fmt.Println("Vous venez d'équiper : ", s)
 		}
 		if torse != s {
-			char1.Equipement.Torse = s			
+			char1.Equipement.Torse = s
 		}
 		fmt.Println("Vous n'avez rien à équiper")
 	}

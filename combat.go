@@ -82,6 +82,9 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 			m := scanner.Text() // lis ce que l'utilisation a écrit
 			switch m {
 			case "1":
+				if char3.Point_de_vie_restant > char3.Point_de_vie_max {
+					char3.Point_de_vie_max = char3.Point_de_vie_restant
+				}
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous avez décidé de réaliser une attaque simple")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")

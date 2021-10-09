@@ -30,12 +30,17 @@ func Contains(tab []string, s string) bool { // Si une string est contenue dans 
 }
 
 func (char1 *personnage) LearnSkill() { // Permet d'apprendre un sort s'il est bien présent dans son inventaire
-	for _, skill := range char1.Inventaire {
-		if skill == "Livre de sort : Boule de feu" {
-			skill = "Boule de feu"
-			char1.Skill = AddSkill(char1.Skill, skill)
-			fmt.Println("Vous avez appris le sort Boule de feu")
+	if Contains(char1.Skill, bouleDeFeu) {
+		fmt.Println("Vous avez déjà appris ce sort")
+	}
+	if Contains(char1.Inventaire, livreDeSortBouleDeFeu) && !Contains(char1.Skill, bouleDeFeu) {
+		char1.Skill = AddSkill(char1.Skill, bouleDeFeu)
+		fmt.Println("Vous avez appris le sort Boule de feu")
+		char1.Inventaire = RemoveInventory(char1.Inventaire, livreDeSortBouleDeFeu)
 
-		}
+	}
+	if !(Contains(char1.Inventaire, livreDeSortBouleDeFeu)) && !Contains(char1.Skill, bouleDeFeu) {
+		fmt.Println("Vous n'avez pas le livre de sort")
+
 	}
 }

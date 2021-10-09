@@ -48,6 +48,7 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre) { // Le menu du j
 				char1.TakePot() // Permet d'utiliser une potion de vie
 			case "2":
 				char1.PoisonPot() // Permet d'utiliser une potion de poison (pourquoi pas)
+				char1.Dead(char3)
 			case "3":
 				char1.LearnSkill()       // Permet d'apprendre un sort
 				fmt.Println(char1.Skill) // Renvoie liste de sorts
@@ -61,15 +62,6 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre) { // Le menu du j
 			fmt.Println("Quel sort souhaitez vous utiliser ?")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			char1.AccessSkill()
-			fmt.Println("1 = ")
-			fmt.Println("2 = Quitter la liste de sort")
-			scanner.Scan() // l'utilisateur input dans la console
-			c := scanner.Text()
-			switch c {
-			case "1":
-			case "2":
-				break
-			}
 		case "4":
 			menuCraft(char1) // Menu du forgeron
 		case "5":
