@@ -30,7 +30,7 @@ func GoblinPattern(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Il vous reste :", char1.Point_de_vie_restant, "/", char1.Point_de_vie_max, "PV restants")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			if char1.Point_de_vie_restant <= 0 { // Mort du gobelin et retour au menu 
+			if char1.Point_de_vie_restant <= 0 { // Mort du gobelin et retour au menu
 				char1.Dead(char3)
 				char1.menu(char2, char3)
 			} else { // Print des tours
@@ -78,8 +78,8 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 			fmt.Println("1 = Attaque simple")
 			fmt.Println("2 = Coup de poing")
 			fmt.Println("3 = Boule de feu")
-			scanner.Scan() // l'utilisateur input dans la console
-			m := scanner.Text() // lis ce que l'utilisation a écrit 
+			scanner.Scan()      // l'utilisateur input dans la console
+			m := scanner.Text() // lis ce que l'utilisation a écrit
 			switch m {
 			case "1":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -88,24 +88,17 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 				char3.Point_de_vie_restant -= char1.Point_d_attaque
 				fmt.Println(char1.Nom, " a infligé", (char1.Point_d_attaque), "points de dégats à", (char3.Nom))
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants") // Renvoi à l'utilisateur son nombre de PV restants sur 
+				fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants") // Renvoi à l'utilisateur son nombre de PV restants sur
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				if char3.Point_de_vie_restant <= 0 { // Permet la mort du gobelin
 					char3.Dead2(char1)
 					count = 1
-					char1.menu(char2, char3) // Renvoi au menu après la mort du gobelin 
+					char1.menu(char2, char3) // Renvoi au menu après la mort du gobelin
 				} else {
 					GoblinPattern(char1, char3, char2) // Sinon renvoi au tour du gobelin
 				}
 			case "2":
-				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				fmt.Println("Vous avez décidé d'utiliser Coup de poing")
-				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char3.Point_de_vie_restant -= 8
-				fmt.Println(char1.Nom, " a infligé 8 points de dégats à", (char3.Nom))
-				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants")
-				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				ManaCoupdePoing(char1, char3, char2)
 				if char3.Point_de_vie_restant <= 0 {
 					char3.Dead2(char1)
 					count = 1
@@ -114,20 +107,7 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 					GoblinPattern(char1, char3, char2)
 				}
 			case "3":
-				if Contains(char1.Skill, "Boule de feu") {
-					char3.Point_de_vie_restant -= 18
-					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-					fmt.Println(char1.Nom, " a infligé 18 points de dégats à", (char3.Nom))
-					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-					fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants")
-					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				} else {
-					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-					fmt.Println("Vous n'avez pas appris ce sort")
-					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-					count--
-					CharTurn(char1, char3, char2)
-				}
+				ManaBouledeFeu(char1, char3, char2)
 				if char3.Point_de_vie_restant <= 0 {
 					char3.Dead2(char1)
 					count = 1
@@ -145,14 +125,21 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 			char1.AccessInventory()
 			fmt.Println("1 = Choisissez une potion de vie")
 			fmt.Println("2 = Choisissez une potion de poison")
-			fmt.Println("3 = Envoyer une potion de vie sur le Gobelin")
-			fmt.Println("4 = Envoyer une potion de poison sur le Gobelin")
-			fmt.Println("5 = Apprendre le sort : Boule de feu")
-			fmt.Println("6 = Ne rien choisir et quitter")
+			fmt.Println("3 = Choisissez une potion de mana")
+			fmt.Println("4 = Envoyer une potion de vie sur le Gobelin")
+			fmt.Println("5 = Envoyer une potion de poison sur le Gobelin")
+			fmt.Println("6 = Apprendre le sort : Boule de feu")
+			fmt.Println("7 = Ne rien choisir et quitter")
 			scanner.Scan() // l'utilisateur input dans la console
 			p := scanner.Text()
 			switch p {
 			case "1":
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				if char1.Point_de_vie_max == char1.Point_de_vie_restant {
+					fmt.Println("Vous ne pouvez pas utiliser de potion")
+					count--
+					CharTurn(char1, char3, char2)
+				}
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				if Contains(char1.Inventaire, potionDeVie) {
 					char1.TakePot()
@@ -175,6 +162,21 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			case "3":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				if char1.Point_de_vie_max == char1.Point_de_vie_restant {
+					fmt.Println("Vous ne pouvez pas utiliser de potion")
+					count--
+					CharTurn(char1, char3, char2)
+				}
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				if Contains(char1.Inventaire, potionDeMana) {
+					char1.TakeManaPot()
+					GoblinPattern(char1, char3, char2)
+				} else {
+					fmt.Println("Vous n'avez pas de potion de mana")
+				}
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			case "4":
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				if Contains(char1.Inventaire, potionDeVie) {
 					char1.ThrowLifePot(char3)
 					GoblinPattern(char1, char3, char2)
@@ -182,7 +184,7 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 					fmt.Println("Vous n'avez pas de potion de vie")
 				}
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			case "4":
+			case "5":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				if Contains(char1.Inventaire, potionDePoison) {
 					char1.ThrowPoisonPot(char3)
@@ -200,7 +202,7 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 					CharTurn(char1, char3, char2)
 				}
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			case "5":
+			case "6":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				char1.LearnSkill()
 				fmt.Println("Sorts appris :")
@@ -214,12 +216,12 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					fmt.Println("Vous n'avez pas acheté le Livre de sort : Boule de feu au marchand")
 				}
-			case "6":
+			case "7":
 				break
 			}
 		case "3":
 			char3.Init("Gobelin d'entrainement", 40, 40, 5)
-			char1.Init("Lunasphys", "Archer", 20, 50, 30, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
+			char1.Init("Lunasphys", "Archer", 20, 50, 30, 50, 30, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
 			count = 1
 			char1.menu(char2, char3)
 		}

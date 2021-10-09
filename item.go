@@ -7,6 +7,7 @@ const (
 	potionDeVie       = "Potion de vie"
 	potionDePoison    = "Potion de poison"
 	bouleDeFeu        = "Boule de feu"
+	potionDeMana      = "Potion de Mana"
 )
 
 func (char1 *personnage) AddItem(item string) {

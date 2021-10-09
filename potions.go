@@ -5,20 +5,14 @@ import (
 	"time"
 )
 
-func (char1 *personnage) TakePot() {
-
-	// Does char1.Inventaire contains a potion ?
-	// If no -> I dont have potion
-	// If pv == pv max -> Potion useless
-	// Prend la potion
-	// J'enleve la potion
-	// si pv > pv max alors pv = pv max
+func (char1 *personnage) TakePot() { //Fonction qui permet d'utiliser une potion de vie
 
 	if !Contains(char1.Inventaire, potionDeVie) {
 		fmt.Println("Vous n'avez pas de potion")
 	}
 	if char1.Point_de_vie_max == char1.Point_de_vie_restant {
 		fmt.Println("Vous ne pouvez pas utiliser de potion")
+
 	}
 	if Contains(char1.Inventaire, potionDeVie) {
 		if char1.Point_de_vie_restant < char1.Point_de_vie_max {
@@ -35,7 +29,7 @@ func (char1 *personnage) TakePot() {
 	fmt.Println(char1.Inventaire)
 }
 
-func (char1 *personnage) PoisonPot() {
+func (char1 *personnage) PoisonPot() { // Fonction qui permet d'utiliser une potion de poison
 	if !Contains(char1.Inventaire, potionDePoison) {
 		fmt.Println("Vous n'avez pas de potion de poison")
 	}
@@ -58,7 +52,7 @@ func (char1 *personnage) PoisonPot() {
 
 }
 
-func (char1 *personnage) ThrowPoisonPot(char3 *monstre) {
+func (char1 *personnage) ThrowPoisonPot(char3 *monstre) { //Fonction qui permet d'envoyer une potion de poison sur le gobelin d'entrainement
 	if !Contains(char1.Inventaire, potionDePoison) {
 		fmt.Println("Vous n'avez pas de potion de poison")
 	}
@@ -80,14 +74,7 @@ func (char1 *personnage) ThrowPoisonPot(char3 *monstre) {
 	fmt.Println("PV :", char3.Point_de_vie_restant, "/", char3.Point_de_vie_max)
 }
 
-func (char1 *personnage) ThrowLifePot(char3 *monstre) {
-
-	// Does char1.Inventaire contains a potion ?
-	// If no -> I dont have potion
-	// If pv == pv max -> Potion useless
-	// Prend la potion
-	// J'enleve la potion
-	// si pv > pv max alors pv = pv max
+func (char1 *personnage) ThrowLifePot(char3 *monstre) { //Fonction qui permet d'envoyer une potion de vie sur le gobelin d'entrainement
 
 	if !Contains(char1.Inventaire, potionDeVie) {
 		fmt.Println("Vous n'avez pas de potion à envoyer")
@@ -104,5 +91,28 @@ func (char1 *personnage) ThrowLifePot(char3 *monstre) {
 
 	}
 	fmt.Println("PV :", char3.Point_de_vie_restant, "/", char3.Point_de_vie_max)
+	fmt.Println(char1.Inventaire)
+}
+
+func (char1 *personnage) TakeManaPot() { //Fonction qui permet d'utiliser une potion de vie
+
+	if !Contains(char1.Inventaire, potionDeMana) {
+		fmt.Println("Vous n'avez pas de potion de Mana")
+	}
+	if char1.Point_de_mana_max == char1.Point_de_mana_restant {
+		fmt.Println("Vous ne pouvez pas utiliser de potion de Mana")
+	}
+	if Contains(char1.Inventaire, potionDeMana) {
+		if char1.Point_de_mana_restant < char1.Point_de_mana_max {
+			char1.Point_de_mana_restant += 20
+			fmt.Println("Vous avez utilisé une potion de Mana")
+			char1.Inventaire = RemoveInventory(char1.Inventaire, potionDeMana)
+		}
+	}
+	if char1.Point_de_mana_restant > char1.Point_de_mana_max {
+		char1.Point_de_mana_restant = char1.Point_de_mana_max
+
+	}
+	fmt.Println("Vous avez maintenant :", char1.Point_de_mana_restant, "/", char1.Point_de_mana_max, "Points de Mana")
 	fmt.Println(char1.Inventaire)
 }

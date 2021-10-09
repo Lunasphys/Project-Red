@@ -34,12 +34,13 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("1 = Acheter une potion de vie (3 pièces d'or)")
 	fmt.Println("2 = Acheter une potion de poison (6 pièces d'or)")
-	fmt.Println("3 = Acheter Livre de sort : Boule de feu (25 pièces d'or)")
-	fmt.Println("4 = Acheter une Fourrure de Loup (4 pièces d'or)")
-	fmt.Println("5 = Acheter une Peau de Troll (7 pièces d'or)")
-	fmt.Println("6 = Acheter une Cuir de Sanglier (3 pièces d'or)")
-	fmt.Println("7 = Acheter une Plume de Corbeau (6 pièces d'or)")
-	fmt.Println("8 = Quitter l'inventaire du marchand")
+	fmt.Println("3 = Acheter une potion de mana (5 pièces d'or)")
+	fmt.Println("4 = Acheter Livre de sort : Boule de feu (25 pièces d'or)")
+	fmt.Println("5 = Acheter une Fourrure de Loup (4 pièces d'or)")
+	fmt.Println("6 = Acheter une Peau de Troll (7 pièces d'or)")
+	fmt.Println("7 = Acheter une Cuir de Sanglier (3 pièces d'or)")
+	fmt.Println("8 = Acheter une Plume de Corbeau (6 pièces d'or)")
+	fmt.Println("9 = Quitter l'inventaire du marchand")
 	scanner.Scan() // l'utilisateur input dans la console
 	b := scanner.Text()
 	switch b {
@@ -102,6 +103,34 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 		}
 	case "3":
 		if len(char1.Inventaire) < 10 {
+			if char1.Argent >= 5 {
+				char1.Inventaire = AddInventory(char1.Inventaire, potionDeMana)
+				char1.Argent -= 5
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				fmt.Println("Vous venez d'acheter une potion de mana et vous avez dépensé 5 pièces d'or")
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				fmt.Println(char1.Inventaire)
+				char2.returnMarchand(char1)
+			} else {
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
+				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+				char2.returnMarchand(char1)
+			}
+		} else {
+			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
+			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			fmt.Println(char1.Inventaire)
+			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+			char2.returnMarchand(char1)
+		}
+	case "4":
+		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 25 {
 				char1.Inventaire = AddInventory(char1.Inventaire, "Livre de sort : Boule de feu")
 				char1.Argent -= 25
@@ -128,7 +157,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			char2.returnMarchand(char1)
 		}
-	case "4":
+	case "5":
 		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 4 {
 				char1.Inventaire = AddInventory(char1.Inventaire, "Fourrure de Loup")
@@ -156,7 +185,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			char2.returnMarchand(char1)
 		}
-	case "5":
+	case "6":
 		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 7 {
 				char1.Inventaire = AddInventory(char1.Inventaire, "Peau de Troll")
@@ -184,7 +213,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			char2.returnMarchand(char1)
 		}
-	case "6":
+	case "7":
 		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 3 {
 				char1.Inventaire = AddInventory(char1.Inventaire, "Cuir de Sanglier")
@@ -213,7 +242,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			char2.returnMarchand(char1)
 		}
-	case "7":
+	case "8":
 		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 6 {
 				char1.Inventaire = AddInventory(char1.Inventaire, "Plume de Corbeau")
@@ -240,7 +269,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			char2.returnMarchand(char1)
 		}
-	case "8":
+	case "9":
 		break
 	}
 }
