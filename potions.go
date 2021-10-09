@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func (char1 *personnage) TakePot() {
+func (char1 *personnage) TakePot() { // Permet de prendre une potion de vie
 
 	// Does char1.Inventaire contains a potion ?
 	// If no -> I dont have potion
@@ -14,32 +14,32 @@ func (char1 *personnage) TakePot() {
 	// J'enleve la potion
 	// si pv > pv max alors pv = pv max
 
-	if !Contains(char1.Inventaire, potionDeVie) {
+	if !Contains(char1.Inventaire, potionDeVie) { // Si inventaire ne contient pas de potion de vie, l'indique au joueur
 		fmt.Println("Vous n'avez pas de potion")
 	}
-	if char1.Point_de_vie_max == char1.Point_de_vie_restant {
+	if char1.Point_de_vie_max == char1.Point_de_vie_restant { // Si les PVs max sont égaux aux PVs restants alors l'action est bloqué
 		fmt.Println("Vous ne pouvez pas utiliser de potion")
 	}
-	if Contains(char1.Inventaire, potionDeVie) {
-		if char1.Point_de_vie_restant < char1.Point_de_vie_max {
+	if Contains(char1.Inventaire, potionDeVie) { // Si potion de vie est dans l'inventaire
+		if char1.Point_de_vie_restant < char1.Point_de_vie_max { // Que les PVs restants sont inférieurs aux PVs max alors le joueur peut utiliser sa potion
 			char1.Point_de_vie_restant += 25
 			fmt.Println("Vous avez utilisé une potion de vie")
-			char1.Inventaire = RemoveInventory(char1.Inventaire, potionDeVie)
+			char1.Inventaire = RemoveInventory(char1.Inventaire, potionDeVie) // Retire la potion de vie qui vient d'être utiliser
 		}
 	}
-	if char1.Point_de_vie_restant > char1.Point_de_vie_max {
+	if char1.Point_de_vie_restant > char1.Point_de_vie_max { // Les PVs restants ne peuvent pas dépasser les PVs max
 		char1.Point_de_vie_restant = char1.Point_de_vie_max
 
 	}
-	fmt.Println("PV :", char1.Point_de_vie_restant, "/", char1.Point_de_vie_max)
+	fmt.Println("PV :", char1.Point_de_vie_restant, "/", char1.Point_de_vie_max) 
 	fmt.Println(char1.Inventaire)
 }
 
-func (char1 *personnage) PoisonPot() {
-	if !Contains(char1.Inventaire, potionDePoison) {
+func (char1 *personnage) PoisonPot() { // Permet d'utiliser une potion de poison sur soi-même (le gout du danger)
+	if !Contains(char1.Inventaire, potionDePoison) { // Si potion de poison n'est pas contenu dans l'inventaire alors action impossible
 		fmt.Println("Vous n'avez pas de potion de poison")
 	}
-	if Contains(char1.Inventaire, potionDePoison) {
+	if Contains(char1.Inventaire, potionDePoison) { // Si la potion est bien présente dans l'inventaire, l'action peut être lancée
 		fmt.Println("Applique un poison pendant 3 secondes")
 		char1.Point_de_vie_restant -= 10
 		time.Sleep(1 * time.Second)
@@ -52,7 +52,7 @@ func (char1 *personnage) PoisonPot() {
 		char1.Point_de_vie_restant -= 10
 		time.Sleep(1 * time.Second)
 		fmt.Println("L'effet de la potion de poison s'estompe")
-		char1.Inventaire = RemoveInventory(char1.Inventaire, potionDePoison)
+		char1.Inventaire = RemoveInventory(char1.Inventaire, potionDePoison) // Retire la potion de poison qui vient d'être utilisé
 	}
 	fmt.Println("PV :", char1.Point_de_vie_restant, "/", char1.Point_de_vie_max)
 

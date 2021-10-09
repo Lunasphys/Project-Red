@@ -1,6 +1,6 @@
 package main
 
-type personnage struct {
+type personnage struct { // Informations du personnage 
 	Nom                  string
 	Classe               string
 	Niveau               int
@@ -13,13 +13,13 @@ type personnage struct {
 	Equipement           equipement
 }
 
-type Marchand struct {
+type Marchand struct { // Informations du marchand
 	Nom        string
 	Inventaire []string
 	Argent     int
 }
 
-type equipement struct {
+type equipement struct { // Equipement du joueur
 	Tete   string
 	Torse  string
 	Bottes string

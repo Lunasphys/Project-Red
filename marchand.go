@@ -6,28 +6,25 @@ import (
 	"os"
 )
 
-func (char *Marchand) Init(Nom string, Inventaire []string, Argent int) {
+func (char *Marchand) Init(Nom string, Inventaire []string, Argent int) { 
 	char.Nom = Nom
 	char.Inventaire = Inventaire
 	char.Argent = Argent
 }
 
-func (char2 *Marchand) DisplayInfoMarchand() {
+func (char2 *Marchand) DisplayInfoMarchand() { // Rappelle les informations du marchand
 	fmt.Println(char2.Nom)
 	fmt.Println(char2.Inventaire)
 	fmt.Println(char2.Argent)
 }
 
-func (char2 *Marchand) Inventaire2() {
+func (char2 *Marchand) Inventaire2() { // Inventaire du marchand
 	for i := 0; i < len(char2.Inventaire); i++ {
 		fmt.Println(char2.Inventaire[i])
 	}
 }
 
-func (char2 *Marchand) Vente() {
-}
-
-func (char2 *Marchand) returnMarchand(char1 *personnage) {
+func (char2 *Marchand) returnMarchand(char1 *personnage) { // Permet de ne pas quitter l'interface d'achat du marchand
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("Que voulez-vous acheter ?")

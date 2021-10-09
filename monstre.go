@@ -9,7 +9,7 @@ func (char *monstre) Init(Nom string,Point_de_vie_max int, Point_de_vie_restant 
 	char.Point_d_attaque = Point_d_attaque
 }
 
-func (char1 *monstre) DisplayInfo() {
+func (char1 *monstre) DisplayInfo() { // Afficher information du personnage principal
 	fmt.Println(char1.Nom)
 	fmt.Println(char1.Point_de_vie_max)
 	fmt.Println(char1.Point_de_vie_restant)

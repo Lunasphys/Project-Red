@@ -102,47 +102,47 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 				fmt.Println("Vous avez décidé d'utiliser Coup de poing")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				char3.Point_de_vie_restant -= 8
-				fmt.Println(char1.Nom, " a infligé 8 points de dégats à", (char3.Nom))
+				fmt.Println(char1.Nom, " a infligé 8 points de dégats à", (char3.Nom)) // Retourne à l'utilisateur les dégats infligés qu'il a infligé au gobelin
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants")
+				fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants") // Retourne les pvs restants du gobelin
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				if char3.Point_de_vie_restant <= 0 {
+				if char3.Point_de_vie_restant <= 0 { // Si le gobelin meurt le compteur de tour revient à 0 et l'utilisateur retourne au menu
 					char3.Dead2(char1)
 					count = 1
 					char1.menu(char2, char3)
 				} else {
-					GoblinPattern(char1, char3, char2)
+					GoblinPattern(char1, char3, char2) // Sinon c'est au tour du gobelin de jouer
 				}
 			case "3":
-				if Contains(char1.Skill, "Boule de feu") {
+				if Contains(char1.Skill, "Boule de feu") { // Si la liste des sorts contient bien le sort Boule de feu
 					char3.Point_de_vie_restant -= 18
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-					fmt.Println(char1.Nom, " a infligé 18 points de dégats à", (char3.Nom))
+					fmt.Println(char1.Nom, " a infligé 18 points de dégats à", (char3.Nom)) // Dégat infligé par boule de feu au gobelin
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-					fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants")
+					fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants") // Renvoi les pvs restants du gobelin
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				} else {
+				} else { // Indique à l'utilisateur qu'il ne connait pas ce sort
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					fmt.Println("Vous n'avez pas appris ce sort")
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-					count--
-					CharTurn(char1, char3, char2)
+					count-- // Enlève un tour 
+					CharTurn(char1, char3, char2) // Permet au joueur de pouvoir faire une nouvelle action vu qu'il n'a pu en faire aucune
 				}
-				if char3.Point_de_vie_restant <= 0 {
+				if char3.Point_de_vie_restant <= 0 { // Si gobelin mort,  renvoi au menu et réinitialisation du compteur de tour
 					char3.Dead2(char1)
 					count = 1
 					char1.menu(char2, char3)
-				} else {
+				} else { // Sinon, c'est au tour du gobelin de jouer
 					GoblinPattern(char1, char3, char2)
 				}
 			case "4":
-				break
+				break 
 			}
 		case "2":
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Que souhaitez-vous faire ?")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			char1.AccessInventory()
+			char1.AccessInventory() // Accès à l'inventaire et ses diverses possibilités
 			fmt.Println("1 = Choisissez une potion de vie")
 			fmt.Println("2 = Choisissez une potion de poison")
 			fmt.Println("3 = Envoyer une potion de vie sur le Gobelin")
@@ -154,70 +154,70 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du p
 			switch p {
 			case "1":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				if Contains(char1.Inventaire, potionDeVie) {
-					char1.TakePot()
-					GoblinPattern(char1, char3, char2)
-				} else {
-					fmt.Println("Vous n'avez pas de potion de vie")
+				if Contains(char1.Inventaire, potionDeVie) { // Vérifie si potion de vie est présent dans l'inventaire
+					char1.TakePot() // Permet d'uiliser cette potion
+					GoblinPattern(char1, char3, char2) // Si cette action a pu se dérouler, alors c'est au tour du gobelin d'attaquer
+				} else { // Si potion de vie n'est pas présent dans l'inventaire, renvoi un message au joueur
+					fmt.Println("Vous n'avez pas de potion de vie") 
 				}
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			case "2":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char1.PoisonPot()
-				fmt.Println("Vous avez un QI négatif")
-				if char3.Point_de_vie_restant <= 0 {
-					char3.Dead2(char1)
+				char1.PoisonPot() // Permet d'utiliser une potion de poison sur soi même
+				fmt.Println("Vous avez un QI négatif") // Condescendance des développeurs parce qu'on est trop drôle
+				if char3.Point_de_vie_restant <= 0 { // Si goeblin meurt, le compteur de tour revient à 1 et l'utilisateur se retrouve au menu
+					char3.Dead2(char1) 
 					count = 1
 					char1.menu(char2, char3)
 				} else {
-					GoblinPattern(char1, char3, char2)
+					GoblinPattern(char1, char3, char2) // Sinon c'est au tour du gobelin d'attaquer
 				}
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			case "3":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				if Contains(char1.Inventaire, potionDeVie) {
-					char1.ThrowLifePot(char3)
-					GoblinPattern(char1, char3, char2)
+				if Contains(char1.Inventaire, potionDeVie) { // Si l'inventaire contient  bien une potion de vie
+					char1.ThrowLifePot(char3) // Alors il pourra la jeter sur le gobelin 
+					GoblinPattern(char1, char3, char2) // Tour du gobelin d'attaquer
 				} else {
 					fmt.Println("Vous n'avez pas de potion de vie")
 				}
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			case "4":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				if Contains(char1.Inventaire, potionDePoison) {
-					char1.ThrowPoisonPot(char3)
-					if char3.Point_de_vie_restant <= 0 {
+				if Contains(char1.Inventaire, potionDePoison) { // Si l'inventaire contient bien une potion de poison
+					char1.ThrowPoisonPot(char3) // Si ok, alors action d'envoi de poison sur le gobelin
+					if char3.Point_de_vie_restant <= 0 { // Si le gobelin meurt après cette action, le compteur est remit à 1 et renvoi l'utilisateur au menu
 						char3.Dead2(char1)
 						count = 1
 						char1.menu(char2, char3)
 					} else {
-						GoblinPattern(char1, char3, char2)
+						GoblinPattern(char1, char3, char2) // S'il ne meurt pas, c'est au gobelin d'attaquer
 					}
 				}
-				if !Contains(char1.Inventaire, potionDePoison) {
-					fmt.Println("Vous n'avez pas de potion de poison")
-					count--
-					CharTurn(char1, char3, char2)
+				if !Contains(char1.Inventaire, potionDePoison) { // Si l'inventaire ne contient pas de potion de poison 
+					fmt.Println("Vous n'avez pas de potion de poison") // Print à l'uilisateur qu'il n'en possède pas
+					count-- // Décompte 1 tour 
+					CharTurn(char1, char3, char2) // Permet à l'utilisateur d'effectuer une nouvelle action
 				}
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			case "5":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char1.LearnSkill()
+				char1.LearnSkill() // Fonction qui permet d'apprendre un sort au personnage principal
 				fmt.Println("Sorts appris :")
-				fmt.Println(char1.Skill)
+				fmt.Println(char1.Skill) // Liste des sorts connus par le personnage principal
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				if Contains(char1.Skill, bouleDeFeu) {
-					fmt.Println(char1.Nom, "a appris Boule de feu")
-					GoblinPattern(char1, char3, char2)
+				if Contains(char1.Skill, bouleDeFeu) { // Si la liste de sort contient bien boule de feu
+					fmt.Println(char1.Nom, "a appris Boule de feu") // Indique à l'utilisateur qu'il a bien appris ce soir
+					GoblinPattern(char1, char3, char2) // Renvoi au tour du gobelin
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				} else {
+				} else { // Sinon, indique au joueur qu'il n'a pas acheté de livre et lui indique comment obtenir cet item
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					fmt.Println("Vous n'avez pas acheté le Livre de sort : Boule de feu au marchand")
 				}
 			case "6":
 				break
 			}
-		case "3":
+		case "3": // Reinitialisation des caractéristiques de base du gobelin et du joueur ainsi que du compteur de tour. Renvoi l'utilisateur au menu
 			char3.Init("Gobelin d'entrainement", 40, 40, 5)
 			char1.Init("Lunasphys", "Archer", 20, 50, 30, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
 			count = 1
