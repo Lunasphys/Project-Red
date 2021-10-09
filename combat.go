@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-var count int = 1
+var count int = 1 // Le compteur de tour commence toujours à 1
 
 func TrainingFight(char1 *personnage, char3 *monstre, char2 *Marchand) { // Initialisation combat d'entrainement
 	fmt.Println(char1.Nom, " engage le combat d'entrainement")
@@ -21,42 +21,42 @@ func TrainingFight(char1 *personnage, char3 *monstre, char2 *Marchand) { // Init
 	}
 }
 
-func GoblinPattern(char1 *personnage, char3 *monstre, char2 *Marchand) {
+func GoblinPattern(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du gobelin
 	for {
-		if count%3 == 0 {
+		if count%3 == 0 { // Initie l'attaque critique du gobelin
 			char1.Point_de_vie_restant -= (char3.Point_d_attaque * 2)
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Le gobelin a infligé", (char3.Point_d_attaque * 2), "points de dégats à", (char1.Nom))
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Il vous reste :", char1.Point_de_vie_restant, "/", char1.Point_de_vie_max, "PV restants")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			if char1.Point_de_vie_restant <= 0 {
+			if char1.Point_de_vie_restant <= 0 { // Mort du gobelin et retour au menu 
 				char1.Dead(char3)
 				char1.menu(char2, char3)
-			} else {
+			} else { // Print des tours
 				fmt.Println("======== Tour ", count, " ========")
 				CharTurn(char1, char3, char2)
 			}
-		} else {
+		} else { // Attaque basique du gobelin
 			char1.Point_de_vie_restant -= char3.Point_d_attaque
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Le gobelin a infligé", (char3.Point_d_attaque), "points de dégats à", (char1.Nom))
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Il reste au", char1.Nom, char1.Point_de_vie_restant, "/", char1.Point_de_vie_max, "PV restants")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			if char1.Point_de_vie_restant <= 0 {
+			if char1.Point_de_vie_restant <= 0 { // Mort du gobelin et retour au menu
 				char1.Dead(char3)
 				char1.menu(char2, char3)
 			} else {
-				fmt.Println("======== Tour ", count, " ========")
+				fmt.Println("======== Tour ", count, " ========") // Affichage des tours
 				CharTurn(char1, char3, char2)
 			}
 		}
 	}
 }
 
-func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) {
-	count++
+func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) { // Tour du personnage principal
+	count++ // Compte les différents tours
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("Que souhaitez-vous faire ?")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -79,7 +79,7 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) {
 			fmt.Println("2 = Coup de poing")
 			fmt.Println("3 = Boule de feu")
 			scanner.Scan() // l'utilisateur input dans la console
-			m := scanner.Text()
+			m := scanner.Text() // lis ce que l'utilisation a écrit 
 			switch m {
 			case "1":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -88,14 +88,14 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand) {
 				char3.Point_de_vie_restant -= char1.Point_d_attaque
 				fmt.Println(char1.Nom, " a infligé", (char1.Point_d_attaque), "points de dégats à", (char3.Nom))
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants")
+				fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants") // Renvoi à l'utilisateur son nombre de PV restants sur 
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				if char3.Point_de_vie_restant <= 0 {
+				if char3.Point_de_vie_restant <= 0 { // Permet la mort du gobelin
 					char3.Dead2(char1)
 					count = 1
-					char1.menu(char2, char3)
+					char1.menu(char2, char3) // Renvoi au menu après la mort du gobelin 
 				} else {
-					GoblinPattern(char1, char3, char2)
+					GoblinPattern(char1, char3, char2) // Sinon renvoi au tour du gobelin
 				}
 			case "2":
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
