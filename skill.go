@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func (char1 *personnage) AccessSkill() {
+func (char1 *personnage) AccessSkill() { // Voir les sorts appris par le personnage
 	if len(char1.Skill) == 0 {
 		fmt.Println("Vous n'avez appris aucun sort")
 	}
@@ -13,14 +13,14 @@ func (char1 *personnage) AccessSkill() {
 	}
 }
 
-func AddSkill(sorts []string, s string) []string {
+func AddSkill(sorts []string, s string) []string { // Permet d'ajouter un sort dans la liste de sort
 	if !Contains(sorts, s) {
 		sorts = append(sorts, s)
 	}
 	return sorts
 }
 
-func Contains(tab []string, s string) bool {
+func Contains(tab []string, s string) bool { // Si une string est contenue dans un tableau
 	for _, a := range tab {
 		if a == s {
 			return true
@@ -29,7 +29,7 @@ func Contains(tab []string, s string) bool {
 	return false
 }
 
-func (char1 *personnage) LearnSkill() {
+func (char1 *personnage) LearnSkill() { // Permet d'apprendre un sort s'il est bien présent dans son inventaire
 	for _, skill := range char1.Inventaire {
 		if skill == "Livre de sort : Boule de feu" {
 			skill = "Boule de feu"

@@ -40,7 +40,7 @@ func (char1 *personnage) PoisonPot() { // Permet d'utiliser une potion de poison
 		fmt.Println("Vous n'avez pas de potion de poison")
 	}
 	if Contains(char1.Inventaire, potionDePoison) { // Si la potion est bien présente dans l'inventaire, l'action peut être lancée
-		fmt.Println("Applique un poison pendant 3 secondes")
+		fmt.Println("Applique un poison sur vous même pendant 3 secondes")
 		char1.Point_de_vie_restant -= 10
 		time.Sleep(1 * time.Second)
 		fmt.Println("PV :", char1.Point_de_vie_restant, "/", char1.Point_de_vie_max)
@@ -58,11 +58,11 @@ func (char1 *personnage) PoisonPot() { // Permet d'utiliser une potion de poison
 
 }
 
-func (char1 *personnage) ThrowPoisonPot(char3 *monstre) {
-	if !Contains(char1.Inventaire, potionDePoison) {
+func (char1 *personnage) ThrowPoisonPot(char3 *monstre) { // Permet d'envoyer une potion de poison sur l'ennemi
+	if !Contains(char1.Inventaire, potionDePoison) { // Si le joueur n'en a pas dans son inventaire, action impossible, renvoi d'un message d'erreur
 		fmt.Println("Vous n'avez pas de potion de poison")
 	}
-	if Contains(char1.Inventaire, potionDePoison) {
+	if Contains(char1.Inventaire, potionDePoison) { // Si l'objet est présent dans l'inventaire alors les effets sont appliqués sur l'ennemi
 		fmt.Println("Applique un poison sur l'ennemi pendant 3 secondes")
 		char3.Point_de_vie_restant -= 10
 		time.Sleep(1 * time.Second)
@@ -75,12 +75,12 @@ func (char1 *personnage) ThrowPoisonPot(char3 *monstre) {
 		char3.Point_de_vie_restant -= 10
 		time.Sleep(1 * time.Second)
 		fmt.Println("L'effet de la potion de poison s'estompe")
-		char1.Inventaire = RemoveInventory(char1.Inventaire, potionDePoison)
+		char1.Inventaire = RemoveInventory(char1.Inventaire, potionDePoison) // Enlève l'objet utilisé de l'inventaire du joueur
 	}
 	fmt.Println("PV :", char3.Point_de_vie_restant, "/", char3.Point_de_vie_max)
 }
 
-func (char1 *personnage) ThrowLifePot(char3 *monstre) {
+func (char1 *personnage) ThrowLifePot(char3 *monstre) { // Permet d'envoyer une potion de soin sur l'ennemi (Pourquoi pas)
 
 	// Does char1.Inventaire contains a potion ?
 	// If no -> I dont have potion
@@ -89,17 +89,17 @@ func (char1 *personnage) ThrowLifePot(char3 *monstre) {
 	// J'enleve la potion
 	// si pv > pv max alors pv = pv max
 
-	if !Contains(char1.Inventaire, potionDeVie) {
+	if !Contains(char1.Inventaire, potionDeVie) { // Si le joueur n'en a pas dans son inventaire alors l'action ne peut pas être réalisée
 		fmt.Println("Vous n'avez pas de potion à envoyer")
 	}
-	if Contains(char1.Inventaire, potionDeVie) {
+	if Contains(char1.Inventaire, potionDeVie) { // Si le joueur possède une potion de vie dans son inventaire alors il peut l'envoyer contre l'ennemi
 		if char3.Point_de_vie_restant <= char3.Point_de_vie_max {
 			char3.Point_de_vie_restant += 25
 			fmt.Println("Vous venez de soigner le gobelin, vous avez un QI négatif")
 			char1.Inventaire = RemoveInventory(char1.Inventaire, potionDeVie)
 		}
 	}
-	if char3.Point_de_vie_restant > char3.Point_de_vie_max {
+	if char3.Point_de_vie_restant > char3.Point_de_vie_max { // Les PVs restants du gobelin ne peuvent pas excéder les PVs maxs
 		char3.Point_de_vie_restant = char3.Point_de_vie_max
 
 	}

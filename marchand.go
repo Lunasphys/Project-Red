@@ -40,35 +40,35 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) { // Permet de ne pas q
 	scanner.Scan() // l'utilisateur input dans la console
 	b := scanner.Text()
 	switch b {
-	case "1":
-		if len(char1.Inventaire) < 10 {
+	case "1": // Acheter une potion de vie
+		if len(char1.Inventaire) < 10 { // Vérifie si inventaire pas plein
 			if char1.Argent >= 3 {
-				char1.Inventaire = AddInventory(char1.Inventaire, "Potion de vie")
+				char1.Inventaire = AddInventory(char1.Inventaire, "Potion de vie") // Ajoute l'objet à l'inventaire
 				char1.Argent -= 3
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous venez d'acheter une potion de vie et vous avez dépensé 3 pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				fmt.Println(char1.Inventaire)
-				char2.returnMarchand(char1)
+				fmt.Println(char1.Inventaire)// Renvoi l'inventaire
+				char2.returnMarchand(char1) // Permet de rester dans le menu du marchand
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println(char1.Inventaire)
+			fmt.Println(char1.Inventaire)// Renvoi l'inventaire
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			char2.returnMarchand(char1)
+			char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 		}
-	case "2":
+	case "2": // Acheter une potion de poison
 		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 6 {
 				char1.Inventaire = AddInventory(char1.Inventaire, "Potion de poison")
@@ -78,26 +78,26 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) { // Permet de ne pas q
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println(char1.Inventaire)
+			fmt.Println(char1.Inventaire)// Renvoi l'inventaire
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			char2.returnMarchand(char1)
+			char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 
 		}
-	case "3":
+	case "3": // Acheter le sort boule de feu
 		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 25 {
 				char1.Inventaire = AddInventory(char1.Inventaire, "Livre de sort : Boule de feu")
@@ -106,26 +106,26 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) { // Permet de ne pas q
 				fmt.Println("Vous venez d'acheter le Livre de sort : Boule de feu et avez dépensé 25 pièces d'or")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				fmt.Println(char1.Inventaire)
+				fmt.Println(char1.Inventaire)// Renvoi l'inventaire
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println(char1.Inventaire)
+			fmt.Println(char1.Inventaire)// Renvoi l'inventaire
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			char2.returnMarchand(char1)
+			char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 		}
-	case "4":
+	case "4": // Acheter une fourrure de loup
 		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 4 {
 				char1.Inventaire = AddInventory(char1.Inventaire, "Fourrure de Loup")
@@ -134,26 +134,26 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) { // Permet de ne pas q
 				fmt.Println("Vous venez d'acheter une Fourrure de Loup et avez dépensé 4 pièces d'or")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				fmt.Println(char1.Inventaire)
+				fmt.Println(char1.Inventaire)// Renvoi l'inventaire
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1) // Permet de rester dans le menu du marchand
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1) // Permet de rester dans le menu du marchand
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println(char1.Inventaire)
+			fmt.Println(char1.Inventaire)// Renvoi l'inventaire
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			char2.returnMarchand(char1)
+			char2.returnMarchand(char1) // Permet de rester dans le menu du marchand
 		}
-	case "5":
+	case "5": // Acheter une peau de troll
 		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 7 {
 				char1.Inventaire = AddInventory(char1.Inventaire, "Peau de Troll")
@@ -162,24 +162,24 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) { // Permet de ne pas q
 				fmt.Println("Vous venez d'acheter une Peau de Troll et avez dépensé 7 pièces d'or")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				fmt.Println(char1.Inventaire)
+				fmt.Println(char1.Inventaire)// Renvoi l'inventaire
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1) // Permet de rester dans le menu du marchand
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1) // Permet de rester dans le menu du marchand
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println(char1.Inventaire)
+			fmt.Println(char1.Inventaire)// Renvoi l'inventaire
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			char2.returnMarchand(char1)
+			char2.returnMarchand(char1) // Permet de rester dans le menu du marchand
 		}
 	case "6":
 		if len(char1.Inventaire) < 10 {
@@ -191,26 +191,26 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) { // Permet de ne pas q
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				fmt.Println(char1.Inventaire)
+				fmt.Println(char1.Inventaire)// Renvoi l'inventaire
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println(char1.Inventaire)
+			fmt.Println(char1.Inventaire)// Renvoi l'inventaire
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			char2.returnMarchand(char1)
+			char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 		}
-	case "7":
+	case "7": // Acheter une plume de corbeau
 		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 6 {
 				char1.Inventaire = AddInventory(char1.Inventaire, "Plume de Corbeau")
@@ -220,24 +220,24 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) { // Permet de ne pas q
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 			} else {
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous êtes trop pauvre pour pouvoir acheter un item")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-				char2.returnMarchand(char1)
+				char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 			}
 		} else {
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Vous n'avez pas assez de place dans votre inventaire")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println(char1.Inventaire)
+			fmt.Println(char1.Inventaire) // Renvoi l'inventaire
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			char2.returnMarchand(char1)
+			char2.returnMarchand(char1)// Permet de rester dans le menu du marchand
 		}
-	case "8":
+	case "8": // Partir du marchand
 		break
 	}
 }
