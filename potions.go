@@ -100,7 +100,7 @@ func (char1 *personnage) ThrowLifePot(char3 *monstre) { // Permet d'envoyer une 
 	fmt.Println(char1.Inventaire)
 }
 
-func (char1 *personnage) TakeManaPot() { //Fonction qui permet d'utiliser une potion de vie
+func (char1 *personnage) TakeManaPot() { //Fonction qui permet d'utiliser une potion de mana
 
 	if !Contains(char1.Inventaire, potionDeMana) {
 		fmt.Println("Vous n'avez pas de potion de Mana")
