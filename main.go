@@ -14,6 +14,7 @@ type personnage struct {
 	Argent                int
 	Equipement            equipement
 }
+
 type Marchand struct { // Informations du marchand
 	Nom        string
 	Inventaire []string
@@ -34,12 +35,15 @@ type monstre struct { // Informations du Gobelin d'entrainement
 }
 
 func main() { // Informations du personnage principal, du marchand et du gobelin d'entrainement
+	var char4 personnage
 	var char3 monstre
 	var char2 Marchand
 	var char1 personnage
-	char1.Init("Lunasphys", "Archer", 20, 50, 30, 50, 30, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
+	char1.Init("Lunasphys", "Archer", 20, 50, 30, 50, 40, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
 	char2.Init("Marchand", []string{"Potion de vie", "Potion de poison", "Potion de Mana", "Livre de sort : Boule de feu", "Fourrure de loup", "Peau de troll", "Cuir de Sanglier", "Plume de Corbeau"}, 1000000)
 	char3.Init("Gobelin d'entrainement", 40, 40, 5)
+	char4.Init("", "", 0, 0, 0, 0, 0, 0, []string{}, []string{}, 0)
+	char4 = char1
 	//char1.TakePot()
-	char1.menu(&char2, &char3)
+	char1.menu(&char2, &char3, &char4)
 }

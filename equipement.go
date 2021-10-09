@@ -19,46 +19,46 @@ func (char1 *personnage) ShowEquipement() {
 }
 
 func (char1 *personnage) EquipHead(s string) string {
-	for _, tete := range char1.Inventaire {
-		if tete == s && char1.Equipement.Tete != s {
-			char1.Equipement.Tete = s
-			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println("Vous venez d'équiper : ", s)
-		} else if char1.Equipement.Tete == s {
-			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println("Vous n'avez rien à équiper")
-		}
+	if Contains(char1.Inventaire, s) {
+		char1.Equipement.Tete = s
+		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+		fmt.Println("Vous venez d'équiper : ", s)
+		fmt.Println(char1.Inventaire)
+	}
+	if !(Contains(char1.Inventaire, s)) {
+		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+		fmt.Println("Vous n'avez rien à équiper")
+		fmt.Println(char1.Inventaire)
 	}
 	return char1.Equipement.Tete
 }
 
 func (char1 *personnage) EquipChest(s string) string {
-	for _, torse := range char1.Inventaire {
-		if torse == s {
-			char1.Equipement.Torse = s
-			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println("Vous venez d'équiper : ", s)
-		}
-		if torse != s {
-			char1.Equipement.Torse = s
-		}
+	if Contains(char1.Inventaire, s) {
+		char1.Equipement.Torse = s
+		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+		fmt.Println("Vous venez d'équiper : ", s)
+		fmt.Println(char1.Inventaire)
+	}
+	if !(Contains(char1.Inventaire, s)) {
+		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Vous n'avez rien à équiper")
+		fmt.Println(char1.Inventaire)
 	}
 	return char1.Equipement.Torse
 }
 
 func (char1 *personnage) EquipBoots(s string) string {
-	for _, boot := range char1.Inventaire {
-		if boot == s {
-			char1.Equipement.Bottes = s
-			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println("Vous venez d'équiper : ", s)
-		}
-		if !(boot == s) {
-			char1.Equipement.Bottes = s
-		}
+	if Contains(char1.Inventaire, s) {
+		char1.Equipement.Bottes = s
+		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+		fmt.Println("Vous venez d'équiper : ", s)
+		fmt.Println(char1.Inventaire)
+	}
+	if !(Contains(char1.Inventaire, s)) {
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Vous n'avez rien à équiper")
+		fmt.Println(char1.Inventaire)
 	}
 	return char1.Equipement.Bottes
 }
@@ -74,6 +74,10 @@ func menuEquipement(char1 *personnage) {
 	e := scanner.Text()
 	switch e {
 	case "1":
+		if !Contains(char1.Inventaire, chapeauAventurier) {
+			char1.EquipHead("")
+			break
+		}
 		char1.RemoveItem(char1.Equipement.Tete)
 		char1.AddItem(chapeauAventurier)
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")

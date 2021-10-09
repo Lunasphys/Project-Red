@@ -38,12 +38,24 @@ func (char1 *personnage) Dead(char3 *monstre) { /* Permet au perso principal de 
 	char1.Point_de_vie_restant += (char1.Point_de_vie_max / 2)
 	fmt.Println("Vous etes revenue a la vie avec 50% de vos point de vie restant")
 	char3.Init("Gobelin d'entrainement", 40, 40, 5)
-	char1.Init("Lunasphys", "Archer", 20, 50, 30, 50, 30, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
 }
 
-func (char3 *monstre) Dead2(char1 *personnage) { // Permet au gobelin de mourir et de réinitialiser ses stats de base à la fin du combat
+func (char3 *monstre) Dead2() { // Permet au gobelin de mourir et de réinitialiser ses stats de base à la fin du combat
 	fmt.Println("Le gobelin est mort")
 	char3.Init("Gobelin d'entrainement", 40, 40, 5)
 	fmt.Println("Un nouveau Gobelin est disponible")
-	char1.Init("Lunasphys", "Archer", 20, 50, 30, 50, 30, 5, []string{"Coup de Poing"}, []string{"Potion de vie", "Potion de vie", "Potion de vie", "Potion de poison"}, 100)
+}
+
+func (char4 *personnage) DisplayInfo1() { /* Cette fonction permet d'afficher les informations principales de notre personnage lorsque cette fonction est appelée dans le menu*/
+	fmt.Println(char4.Nom)
+	fmt.Println(char4.Classe)
+	fmt.Println("Vous êtes level :", char4.Niveau)
+	fmt.Println("PV max :", char4.Point_de_vie_max)
+	fmt.Println("PV restant :", char4.Point_de_vie_restant)
+	fmt.Println("Mana max :", char4.Point_de_mana_max)
+	fmt.Println("Mana restant :", char4.Point_de_mana_restant)
+	fmt.Println("Vous avez", char4.Point_d_attaque, "points d'attaque")
+	fmt.Println("Liste des sorts :", char4.Skill)
+	fmt.Println("Vous détenez :", char4.Inventaire)
+	fmt.Println("Vous avez", char4.Argent, "Pièces d'or")
 }

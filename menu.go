@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func (char1 *personnage) menu(char2 *Marchand, char3 *monstre) { // Le menu du jeu
+func (char1 *personnage) menu(char2 *Marchand, char3 *monstre, char4 *personnage) { // Le menu du jeu
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("Que souhaitez-vous faire ?")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -39,8 +39,9 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre) { // Le menu du j
 			char1.AccessInventory() // Accès à l'inventaire et ses différentes actions
 			fmt.Println("1 = Choisissez une potion de vie")
 			fmt.Println("2 = Choisissez une potion de poison")
-			fmt.Println("3 = Apprendre le sort : Boule de feu")
-			fmt.Println("4 = Ne rien choisir et quitter")
+			fmt.Println("3 = Choisissez une potion de mana")
+			fmt.Println("4 = Apprendre le sort : Boule de feu")
+			fmt.Println("5 = Ne rien choisir et quitter")
 			scanner.Scan() // l'utilisateur input dans la console
 			n := scanner.Text()
 			switch n {
@@ -50,16 +51,18 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre) { // Le menu du j
 				char1.PoisonPot() // Permet d'utiliser une potion de poison (pourquoi pas)
 				char1.Dead(char3)
 			case "3":
+				char1.TakeManaPot() // Permet d'utiliser une potion de mana
+			case "4":
 				char1.LearnSkill()       // Permet d'apprendre un sort
 				fmt.Println(char1.Skill) // Renvoie liste de sorts
-			case "4":
+			case "5":
 				break
 			}
 		case "2":
 			char2.returnMarchand(char1) // Rentre dans le menu du marchand
-		case "3": // Permet d'apprendre le sort boule de feu
+		case "3":
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println("Quel sort souhaitez vous utiliser ?")
+			fmt.Println("Voici votre liste de sorts ?")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			char1.AccessSkill()
 		case "4":
@@ -67,16 +70,7 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre) { // Le menu du j
 		case "5":
 			menuEquipement(char1) // Menu de l'équipement
 		case "6":
-			TrainingFight(char1, char3, char2)
-			fmt.Println("1 = Quitter l'entrainement")
-			TrainingFight(char1, char3, char2) // Permet de lancer un combat contre le gobelin d'entrainement
-			scanner.Scan()                     // l'utilisateur input dans la console
-			f := scanner.Text()
-			switch f {
-			case "1":
-				break
-			}
-
+			TrainingFight(char1, char3, char2, char4) // Permet de lancer un combat contre le gobelin d'entraineme    *
 		case "7":
 			os.Exit(2)
 		}

@@ -2,13 +2,13 @@ package main
 
 import "fmt"
 
-func ManaCoupdePoing(char1 *personnage, char3 *monstre, char2 *Marchand) {
+func ManaCoupdePoing(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personnage) {
 
 	if char1.Point_de_mana_restant < 5 {
 		fmt.Println("Vous n'avez pas le mana requis pour lancez coup de poing")
 		fmt.Println("Il vous reste seulement", char1.Point_de_mana_restant, "/", char1.Point_de_mana_max, "points de mana")
 		count--
-		CharTurn(char1, char3, char2)
+		CharTurn(char1, char3, char2, char4)
 	}
 	if char1.Point_de_mana_restant > 4 {
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -28,13 +28,13 @@ func ManaCoupdePoing(char1 *personnage, char3 *monstre, char2 *Marchand) {
 
 }
 
-func ManaBouledeFeu(char1 *personnage, char3 *monstre, char2 *Marchand) {
+func ManaBouledeFeu(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personnage) {
 
 	if char1.Point_de_mana_restant < 5 {
 		fmt.Println("Il vous reste seulement", char1.Point_de_mana_restant, "/", char1.Point_de_mana_max, "points de mana")
 		fmt.Println("Vous n'avez pas le mana requis pour lancez boule de feu")
 		count--
-		CharTurn(char1, char3, char2)
+		CharTurn(char1, char3, char2, char4)
 	}
 	if Contains(char1.Skill, bouleDeFeu) {
 		char3.Point_de_vie_restant -= 18
@@ -54,6 +54,6 @@ func ManaBouledeFeu(char1 *personnage, char3 *monstre, char2 *Marchand) {
 		fmt.Println("Vous n'avez pas appris ce sort")
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		count--
-		CharTurn(char1, char3, char2)
+		CharTurn(char1, char3, char2, char4)
 	}
 }
