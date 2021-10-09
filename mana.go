@@ -36,7 +36,7 @@ func ManaBouledeFeu(char1 *personnage, char3 *monstre, char2 *Marchand) {
 		count--
 		CharTurn(char1, char3, char2)
 	}
-	if Contains(char1.Skill, "Boule de feu") {
+	if Contains(char1.Skill, bouleDeFeu) {
 		char3.Point_de_vie_restant -= 18
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		char1.Point_de_mana_restant -= 10
