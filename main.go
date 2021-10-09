@@ -25,14 +25,14 @@ type equipement struct { // Equipement du joueur
 	Bottes string
 }
 
-type monstre struct {
+type monstre struct { // Informations du Gobelin d'entrainement
 	Nom                  string
 	Point_de_vie_max     int
 	Point_de_vie_restant int
 	Point_d_attaque      int
 }
 
-func main() {
+func main() { // Informations du personnage principal, du marchand et du gobelin d'entrainement
 	var char3 monstre
 	var char2 Marchand
 	var char1 personnage

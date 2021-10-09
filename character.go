@@ -2,8 +2,7 @@ package main
 
 import "fmt"
 
-/* Cette fonction permet de gérer les paramètres du personnage principal
-*/
+// Cette fonction permet de gérer les paramètres du personnage principal
 func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie_max int, Point_de_vie_restant int, Point_d_attaque int, Skill []string, Inventaire []string, Argent int) {
 	char.Nom = Nom
 	char.Classe = Classe
