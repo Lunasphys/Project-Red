@@ -85,6 +85,10 @@ func menuEquipement(char1 *personnage) {
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
 	case "2":
+		if !Contains(char1.Inventaire, tuniqueAventurier) {
+			char1.EquipChest("")
+			break
+		}
 		char1.RemoveItem(char1.Equipement.Torse)
 		char1.AddItem(tuniqueAventurier)
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -92,6 +96,10 @@ func menuEquipement(char1 *personnage) {
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
 	case "3":
+		if !Contains(char1.Inventaire, bottesAventurier) {
+			char1.EquipBoots("")
+			break
+		}
 		char1.RemoveItem(char1.Equipement.Bottes)
 		char1.AddItem(bottesAventurier)
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
