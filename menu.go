@@ -70,6 +70,8 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre, char4 *personnage
 		case "5":
 			menuEquipement(char1) // Menu de l'équipement
 		case "6":
+			char1.DisplayInfo()
+			char3.DisplayInfo()
 			TrainingFight(char1, char3, char2, char4) // Permet de lancer un combat contre le gobelin d'entraineme    *
 		case "7":
 			os.Exit(2)

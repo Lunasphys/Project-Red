@@ -4,7 +4,7 @@ import "fmt"
 
 /* Cette fonction permet de gérer les paramètres du personnage principal
  */
-func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie_max int, Point_de_vie_restant int, Point_de_mana_max int, Point_de_mana_restant int, Point_d_attaque int, Skill []string, Inventaire []string, Argent int) {
+func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie_max int, Point_de_vie_restant int, Point_de_mana_max int, Point_de_mana_restant int, Point_d_attaque int, Initiative int, Skill []string, Inventaire []string, Argent int) {
 	char.Nom = Nom
 	char.Classe = Classe
 	char.Niveau = Niveau
@@ -13,6 +13,7 @@ func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie
 	char.Point_de_mana_max = Point_de_mana_max
 	char.Point_de_mana_restant = Point_de_mana_restant
 	char.Point_d_attaque = Point_d_attaque
+	char.Initiative = Initiative
 	char.Skill = Skill
 	char.Inventaire = Inventaire
 	char.Argent = Argent
@@ -27,6 +28,7 @@ func (char1 *personnage) DisplayInfo() { /* Cette fonction permet d'afficher les
 	fmt.Println("Mana max :", char1.Point_de_mana_max)
 	fmt.Println("Mana restant :", char1.Point_de_mana_restant)
 	fmt.Println("Vous avez", char1.Point_d_attaque, "points d'attaque")
+	fmt.Println("Vous avez", char1.Initiative, "d'Initiative")
 	fmt.Println("Liste des sorts :", char1.Skill)
 	fmt.Println("Vous détenez :", char1.Inventaire)
 	fmt.Println("Vous avez", char1.Argent, "Pièces d'or")
@@ -37,12 +39,12 @@ func (char1 *personnage) Dead(char3 *monstre) { /* Permet au perso principal de 
 	fmt.Println("Vous etes mort")
 	char1.Point_de_vie_restant += (char1.Point_de_vie_max / 2)
 	fmt.Println("Vous etes revenue a la vie avec 50% de vos point de vie restant")
-	char3.Init("Gobelin d'entrainement", 40, 40, 5)
+	char3.Init("Gobelin d'entrainement", 40, 40, 5, 40)
 }
 
 func (char3 *monstre) Dead2() { // Permet au gobelin de mourir et de réinitialiser ses stats de base à la fin du combat
 	fmt.Println("Le gobelin est mort")
-	char3.Init("Gobelin d'entrainement", 40, 40, 5)
+	char3.Init("Gobelin d'entrainement", 40, 40, 5, 40)
 	fmt.Println("Un nouveau Gobelin est disponible")
 }
 

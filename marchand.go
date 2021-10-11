@@ -129,7 +129,7 @@ func (char2 *Marchand) returnMarchand(char1 *personnage) { // Permet de ne pas q
 	case "4": // Acheter le sort boule de feu
 		if len(char1.Inventaire) < 10 {
 			if char1.Argent >= 25 {
-				char1.Inventaire = AddInventory(char1.Inventaire, "Livre de sort : Boule de feu")
+				char1.Inventaire = AddInventory(char1.Inventaire, livreDeSortBouleDeFeu)
 				char1.Argent -= 25
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous venez d'acheter le Livre de sort : Boule de feu et avez dépensé 25 pièces d'or")

@@ -9,13 +9,18 @@ import (
 var count int = 1 // Le compteur de tour commence toujours à 1
 func TrainingFight(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personnage) { // Initialisation combat d'entrainement
 	fmt.Println(char1.Nom, " engage le combat d'entrainement")
-	fmt.Println()
+	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("A vos armes !!!!")
 	for { //
 		// Condition de fin de combat
 		if char1.Point_de_vie_restant > 0 || char3.Point_de_vie_restant > 0 {
 			fmt.Println("======== Tour ", count, " ========") // Initialisation nombre de tours
+		}
+		if char1.Initiative > char3.Initiative {
 			CharTurn(char1, char3, char2, char4)
+		}
+		if char3.Initiative > char1.Initiative {
+			GoblinPattern(char1, char3, char2, char4)
 		}
 	}
 }
@@ -65,7 +70,6 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personn
 		fmt.Println("1 = Attaquer")
 		fmt.Println("2 = Accéder à votre inventaire")
 		fmt.Println("3 = Prendre la fuite")
-		fmt.Println("4 = Quittez le menu d'attaque")
 		// créer une var scanner qui va lire ce que l'utilisateur va écrire
 		scanner := bufio.NewScanner(os.Stdin)
 		scanner.Scan() // l'utilisateur input dans la console
@@ -80,13 +84,12 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personn
 			fmt.Println("1 = Attaque simple")
 			fmt.Println("2 = Coup de poing")
 			fmt.Println("3 = Boule de feu")
+			fmt.Println("4 = Quittez le menu d'attaque")
 			scanner.Scan()      // l'utilisateur input dans la console
 			m := scanner.Text() // lis ce que l'utilisation a écrit
 			switch m {
 			case "1":
-				if char3.Point_de_vie_restant > char3.Point_de_vie_max {
-					char3.Point_de_vie_max = char3.Point_de_vie_restant
-				}
+
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous avez décidé de réaliser une attaque simple")
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -101,7 +104,7 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personn
 					count = 1
 					char1.menu(char2, char3, char4) // Renvoi au menu après la mort du gobelin
 				} else {
-					GoblinPattern(char1, char3, char2, char4) // Sinon renvoi au tour du gobelin
+					GoblinPattern(char1, char3, char2, char4) // Sinon c'est au tour du gobelin de jouer
 				}
 			case "2":
 				ManaCoupdePoing(char1, char3, char2, char4)
@@ -232,7 +235,7 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personn
 				break
 			}
 		case "3": // Reinitialisation des caractéristiques de base du gobelin et du joueur ainsi que du compteur de tour. Renvoi l'utilisateur au menu
-			char3.Init("Gobelin d'entrainement", 40, 40, 5)
+			char3.Init("Gobelin d'entrainement", 40, 40, 5, 40)
 			char1 = char4
 			char1.menu(char2, char3, char4)
 		}
