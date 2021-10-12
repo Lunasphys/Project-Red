@@ -15,19 +15,15 @@ func TrainingFight(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *pe
 		// Condition de fin de combat
 		if char1.Point_de_vie_restant > 0 || char3.Point_de_vie_restant > 0 {
 			fmt.Println("======== Tour ", count, " ========") // Initialisation nombre de tours
-		}
-		if char1.Initiative > char3.Initiative {
 			CharTurn(char1, char3, char2, char4)
 		}
-		if char3.Initiative > char1.Initiative {
-			GoblinPattern(char1, char3, char2, char4)
-		}
+
 	}
 }
 
 func GoblinPattern(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personnage) { // Tour du gobelin
 	for {
-		if count%3 == 0 { // Initie l'attaque critique du gobelin
+		if count%3 == 1 { // Initie l'attaque critique du gobelin
 			char1.Point_de_vie_restant -= (char3.Point_d_attaque * 2)
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Le gobelin a infligé", (char3.Point_d_attaque * 2), "points de dégats à", (char1.Nom))

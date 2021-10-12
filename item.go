@@ -31,14 +31,14 @@ func (char1 *personnage) AddItem(item string) { // Permet d'ajouter l'item qui a
 func (char1 *personnage) RemoveItem(item string) { // Retire l'item de l'équipement et renvoi celui qui été déjà en place dans l'inventaire
 	if item == chapeauAventurier {
 		char1.Point_de_vie_max -= 10 // Spécificité de l'item
-		char1.Inventaire = AddInventory(char1.Inventaire, chapeauAventurier)
+		char1.Inventaire = char1.AddInventory(char1.Inventaire, chapeauAventurier)
 	} else if item == tuniqueAventurier {
 		char1.Point_de_vie_max -= 25 // Spécificité de l'item
 		char1.EquipChest("")
-		char1.Inventaire = AddInventory(char1.Inventaire, tuniqueAventurier)
+		char1.Inventaire = char1.AddInventory(char1.Inventaire, tuniqueAventurier)
 	} else if item == bottesAventurier {
 		char1.Point_de_vie_max -= 15 // Spécificité de l'item
 		char1.EquipBoots("")
-		char1.Inventaire = AddInventory(char1.Inventaire, bottesAventurier)
+		char1.Inventaire = char1.AddInventory(char1.Inventaire, bottesAventurier)
 	}
 }

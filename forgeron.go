@@ -39,9 +39,9 @@ func menuCraft(char1 *personnage) { // Ce que le joueur peut forger comme item e
 		if len(char1.Inventaire) < 10 { // Voir si il y a assez de place dans l'inventaire
 			if char1.Argent >= 5 { // Verifie si le joueur a assez d'argent pour effectuer cette action
 				if char1.Craft(1, 1, "Plume de Corbeau", "Cuir de Sanglier") {
-					char1.Inventaire = AddInventory(char1.Inventaire, chapeauAventurier)     // Ajoute l'item dans l'inventaire
-					char1.Inventaire = RemoveInventory(char1.Inventaire, "Plume de Corbeau") // Retire l'objet utilisé pour le craft de l'inventaire
-					char1.Inventaire = RemoveInventory(char1.Inventaire, "Cuir de Sanglier") // Retire l'objet utilisé pour le craft de l'inventaire
+					char1.Inventaire = char1.AddInventory(char1.Inventaire, chapeauAventurier) // Ajoute l'item dans l'inventaire
+					char1.Inventaire = RemoveInventory(char1.Inventaire, "Plume de Corbeau")   // Retire l'objet utilisé pour le craft de l'inventaire
+					char1.Inventaire = RemoveInventory(char1.Inventaire, "Cuir de Sanglier")   // Retire l'objet utilisé pour le craft de l'inventaire
 					char1.Argent -= 5
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					fmt.Println("Vous venez de dépenser 5 pièces d'or")
@@ -74,10 +74,10 @@ func menuCraft(char1 *personnage) { // Ce que le joueur peut forger comme item e
 		if len(char1.Inventaire) < 10 { // Verifie l'inventaire
 			if char1.Argent >= 5 { // Verifie que le joueur a assez d'argent
 				if char1.Craft(2, 1, "Fourrure de Loup", "Peau de Troll") {
-					char1.Inventaire = AddInventory(char1.Inventaire, "Tunique de l'aventurier") // Ajout de l'item forgé dans l'inventaire
-					char1.Inventaire = RemoveInventory(char1.Inventaire, "Fourrure de Loup")     // Enlève l'objet utilisé pour créer l'item demandé
-					char1.Inventaire = RemoveInventory(char1.Inventaire, "Fourrure de Loup")     // Enlève l'objet utilisé pour créer l'item demandé
-					char1.Inventaire = RemoveInventory(char1.Inventaire, "Peau de Troll")        // Enlève l'objet utilisé pour créer l'item demandé
+					char1.Inventaire = char1.AddInventory(char1.Inventaire, "Tunique de l'aventurier") // Ajout de l'item forgé dans l'inventaire
+					char1.Inventaire = RemoveInventory(char1.Inventaire, "Fourrure de Loup")           // Enlève l'objet utilisé pour créer l'item demandé
+					char1.Inventaire = RemoveInventory(char1.Inventaire, "Fourrure de Loup")           // Enlève l'objet utilisé pour créer l'item demandé
+					char1.Inventaire = RemoveInventory(char1.Inventaire, "Peau de Troll")              // Enlève l'objet utilisé pour créer l'item demandé
 					char1.Argent -= 5
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					fmt.Println("Vous venez de créer une Tunique de l'aventurier")
@@ -111,9 +111,9 @@ func menuCraft(char1 *personnage) { // Ce que le joueur peut forger comme item e
 		if len(char1.Inventaire) < 10 { // Verifie si l'utilisateur a assez de place
 			if char1.Argent >= 5 {
 				if char1.Craft(1, 1, "Fourrure de Loup", "Cuir de Sanglier") {
-					char1.Inventaire = AddInventory(char1.Inventaire, "Bottes de l'Aventurier") // Ajoute l'item forger dans l'inventaire
-					char1.Inventaire = RemoveInventory(char1.Inventaire, "Fourrure de Loup")    // Enlève l'objet utilisé pour créer l'item demandé
-					char1.Inventaire = RemoveInventory(char1.Inventaire, "Cuir de Sanglier")    // Enlève l'objet utilisé pour créer l'item demandé
+					char1.Inventaire = char1.AddInventory(char1.Inventaire, "Bottes de l'Aventurier") // Ajoute l'item forger dans l'inventaire
+					char1.Inventaire = RemoveInventory(char1.Inventaire, "Fourrure de Loup")          // Enlève l'objet utilisé pour créer l'item demandé
+					char1.Inventaire = RemoveInventory(char1.Inventaire, "Cuir de Sanglier")          // Enlève l'objet utilisé pour créer l'item demandé
 					char1.Argent -= 5
 					fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 					fmt.Println("Vous venez de créer des Bottes de l'aventurier")

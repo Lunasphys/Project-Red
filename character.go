@@ -4,7 +4,7 @@ import "fmt"
 
 /* Cette fonction permet de gérer les paramètres du personnage principal
  */
-func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie_max int, Point_de_vie_restant int, Point_de_mana_max int, Point_de_mana_restant int, Point_d_attaque int, Initiative int, Skill []string, Inventaire []string, Argent int) {
+func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie_max int, Point_de_vie_restant int, Point_de_mana_max int, Point_de_mana_restant int, Point_d_attaque int, Initiative int, Skill []string, Inventaire []string, Argent int, Tailleinventairemax int) {
 	char.Nom = Nom
 	char.Classe = Classe
 	char.Niveau = Niveau
@@ -17,6 +17,7 @@ func (char *personnage) Init(Nom string, Classe string, Niveau int, Point_de_vie
 	char.Skill = Skill
 	char.Inventaire = Inventaire
 	char.Argent = Argent
+	char.Tailleinventairemax = Tailleinventairemax
 }
 
 func (char1 *personnage) DisplayInfo() { /* Cette fonction permet d'afficher les informations principales de notre personnage lorsque cette fonction est appelée dans le menu*/
@@ -32,6 +33,7 @@ func (char1 *personnage) DisplayInfo() { /* Cette fonction permet d'afficher les
 	fmt.Println("Liste des sorts :", char1.Skill)
 	fmt.Println("Vous détenez :", char1.Inventaire)
 	fmt.Println("Vous avez", char1.Argent, "Pièces d'or")
+	fmt.Println("Vous avez", char1.Tailleinventairemax, "place dans votre inventaire")
 }
 
 func (char1 *personnage) Dead(char3 *monstre) { /* Permet au perso principal de mourir pendant le combat d'entrainement et de réinitialiser ses stats de base à la fin du combat

@@ -40,8 +40,9 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre, char4 *personnage
 			fmt.Println("1 = Choisissez une potion de vie")
 			fmt.Println("2 = Choisissez une potion de poison")
 			fmt.Println("3 = Choisissez une potion de mana")
-			fmt.Println("4 = Apprendre le sort : Boule de feu")
-			fmt.Println("5 = Ne rien choisir et quitter")
+			fmt.Println("4 = Choisissez un sac a patate")
+			fmt.Println("5 = Apprendre le sort : Boule de feu")
+			fmt.Println("6 = Ne rien choisir et quitter")
 			scanner.Scan() // l'utilisateur input dans la console
 			n := scanner.Text()
 			switch n {
@@ -53,9 +54,11 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre, char4 *personnage
 			case "3":
 				char1.TakeManaPot() // Permet d'utiliser une potion de mana
 			case "4":
+				char1.UpgradeInventorySlot() // Permet d'augmenter son inventaire de 10 slots
+			case "5":
 				char1.LearnSkill()       // Permet d'apprendre un sort
 				fmt.Println(char1.Skill) // Renvoie liste de sorts
-			case "5":
+			case "6":
 				break
 			}
 		case "2":
