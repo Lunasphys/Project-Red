@@ -1,6 +1,6 @@
 package main
 
-type personnage struct {
+type personnage struct { // Stucture du personnage principal
 	Nom                   string
 	Classe                string
 	Niveau                int

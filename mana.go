@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func ManaCoupdePoing(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personnage) {
+func ManaCoupdePoing(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personnage) { // Cout en mana pour le sors coup de point + le sors
 
 	if char1.Point_de_mana_restant < 5 {
 		fmt.Println("Vous n'avez pas le mana requis pour lancez coup de poing")
@@ -14,12 +14,12 @@ func ManaCoupdePoing(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Vous avez décidé d'utiliser Coup de poing")
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-		char1.Point_de_mana_restant -= 5
+		char1.Point_de_mana_restant -= 5 // Cout en mana
 		fmt.Println("Vous avez dépensez 5 points de mana")
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Il vous reste", char1.Point_de_mana_restant, "/", char1.Point_de_mana_max, "points de mana")
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-		char3.Point_de_vie_restant -= 8
+		char3.Point_de_vie_restant -= 8 
 		fmt.Println(char1.Nom, "a infligé 8 points de dégats à", (char3.Nom))
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Il reste au", char3.Nom, char3.Point_de_vie_restant, "/", char3.Point_de_vie_max, "PV restants")
@@ -28,18 +28,18 @@ func ManaCoupdePoing(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *
 
 }
 
-func ManaBouledeFeu(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personnage) {
+func ManaBouledeFeu(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personnage) { // Cout en mana pour le sors boule de feu + le sors
 
 	if char1.Point_de_mana_restant < 5 {
 		fmt.Println("Il vous reste seulement", char1.Point_de_mana_restant, "/", char1.Point_de_mana_max, "points de mana")
 		fmt.Println("Vous n'avez pas le mana requis pour lancez boule de feu")
 		count--
-		CharTurn(char1, char3, char2, char4)
+		CharTurn(char1, char3, char2, char4) // Tour du personnage principal
 	}
-	if Contains(char1.Skill, bouleDeFeu) {
+	if Contains(char1.Skill, bouleDeFeu) { // Si le la list de sort contient boule de feu
 		char3.Point_de_vie_restant -= 18
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-		char1.Point_de_mana_restant -= 10
+		char1.Point_de_mana_restant -= 10 // Cout en mana
 		fmt.Println("Vous avez dépensez 10 points de mana")
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Il vous reste", char1.Point_de_mana_restant, "/", char1.Point_de_mana_max, "points de mana")
@@ -54,6 +54,6 @@ func ManaBouledeFeu(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *p
 		fmt.Println("Vous n'avez pas appris ce sort")
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		count--
-		CharTurn(char1, char3, char2, char4)
+		CharTurn(char1, char3, char2, char4) // Tour du personnage principal
 	}
 }

@@ -34,7 +34,7 @@ func (char1 *personnage) LearnSkill() { // Permet d'apprendre un sort s'il est b
 		fmt.Println("Vous avez déjà appris ce sort")
 	}
 	if Contains(char1.Inventaire, livreDeSortBouleDeFeu) && !Contains(char1.Skill, bouleDeFeu) {
-		char1.Skill = AddSkill(char1.Skill, bouleDeFeu)
+		char1.Skill = AddSkill(char1.Skill, bouleDeFeu) // Ajout du sors à la liste de sors
 		fmt.Println("Vous avez appris le sort Boule de feu")
 		char1.Inventaire = RemoveInventory(char1.Inventaire, livreDeSortBouleDeFeu)
 
