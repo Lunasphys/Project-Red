@@ -168,7 +168,6 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personn
 				fmt.Println("Vous avez un QI négatif") // Condescendance des développeurs parce qu'on est trop drôle
 				if char1.Point_de_vie_restant <= 0 {   // Si goeblin meurt, le compteur de tour revient à 1 et l'utilisateur se retrouve au menu
 					char3.Dead2()
-
 					count = 1
 					char1.menu(char2, char3, char4)
 				} else {
@@ -205,7 +204,6 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personn
 					char1.ThrowPoisonPot(char3)          // Si ok, alors action d'envoi de poison sur le gobelin
 					if char3.Point_de_vie_restant <= 0 { // Si le gobelin meurt après cette action, le compteur est remit à 1 et renvoi l'utilisateur au menu
 						char3.Dead2()
-
 						count = 1
 						char1.menu(char2, char3, char4)
 					} else {
@@ -237,7 +235,6 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personn
 			}
 		case "3": // Reinitialisation des caractéristiques de base du gobelin et du joueur ainsi que du compteur de tour. Renvoi l'utilisateur au menu
 			char3.Init("Gobelin d'entrainement", 40, 40, 5, 40)
-
 			char1.menu(char2, char3, char4)
 		}
 	}
