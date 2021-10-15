@@ -47,5 +47,6 @@ func main() { // Informations du personnage principal, du marchand et du gobelin
 	char3.Init("Gobelin d'entrainement", 40, 40, 5, 60)
 	char4.Init("", "", 0, 0, 0, 0, 0, 0, 0, []string{}, []string{}, 0, 0)
 	char4 = char1
+	char1.start(&char2, &char3, &char4)
 	char1.menu(&char2, &char3, &char4)
 }
