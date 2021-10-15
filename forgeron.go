@@ -44,22 +44,23 @@ func menuCraft(char1 *personnage, char2 *Marchand, char3 *monstre, char4 *person
 	d := scanner.Text()
 	switch d {
 	case "1":
-		char1.Making(5, 1, 1, "Plume de Corbeau", "Cuir de Sanglier", chapeauAventurier)
+		char1.Making(5, 1, 1, "Plume de Corbeau", "Cuir de Sanglier", "", chapeauAventurier)
 	case "2":
-		char1.Making(5, 2, 1, "Fourrure de Loup", "Peau de Troll", tuniqueAventurier)
+		char1.Making(5, 2, 1, "Fourrure de Loup", "Peau de Troll", "Fourrure de Loup", tuniqueAventurier)
 	case "3":
-		char1.Making(5, 1, 1, "Fourrure de Loup", "Cuir de Sanglier", bottesAventurier)
+		char1.Making(5, 1, 1, "Fourrure de Loup", "Cuir de Sanglier", "", bottesAventurier)
 	case "4":
 		char1.menu(char2, char3, char4)
 	}
 }
-func (char1 *personnage) Making(argent1 int, nbobjet1 int, nbobjet2 int, objet1 string, objet2 string, equipement string) {
+func (char1 *personnage) Making(argent1 int, nbobjet1 int, nbobjet2 int, objet1 string, objet2 string, objet3 string, equipement string) {
 	if len(char1.Inventaire) < char1.Tailleinventairemax { // Voir si il y a assez de place dans l'inventaire
 		if char1.Argent >= argent1 { // Verifie si le joueur a assez d'argent pour effectuer cette action
 			if char1.Craft(nbobjet1, nbobjet2, objet1, objet2) {
 				char1.Inventaire = char1.AddInventory(char1.Inventaire, equipement) // Ajoute l'item dans l'inventaire
 				char1.Inventaire = RemoveInventory(char1.Inventaire, objet1)        // Retire l'objet utilisé pour le craft de l'inventaire
 				char1.Inventaire = RemoveInventory(char1.Inventaire, objet2)        // Retire l'objet utilisé pour le craft de l'inventaire
+				char1.Inventaire = RemoveInventory(char1.Inventaire, objet3)        // Retire l'objet utilisé pour le craft de l'inventaire
 				char1.Argent -= argent1
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				fmt.Println("Vous venez de dépenser", argent1, " d'or")
