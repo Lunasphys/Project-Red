@@ -18,6 +18,7 @@ func SlowPrint(str ...string) {
 		}
 	}
 }
+
 func (char1 *personnage) start(char2 *Marchand, char3 *monstre, char4 *personnage) {
 	SlowPrint("Bonjour à vous jeune aventurier.\n", "Bienvenue dans cette démo jouable qui représente notre premier projet de l année.\n", "Nous sommes heureux de partager cette expérience avec vous et vous montrer nos balbutiements en langage informatique ! \n", "Vous assistez à nos premiers pas dans ce monde, quel honneur.\n Après de nombreuses heures à se creuser la tête, à bloquer devant des messages d’erreurs et à courir après le temps, voici enfin la première ébauche « jouable » de notre projet. \n Merci d’avoir pris le temps de l ouvrir, en espérant que vous passerez un bon moment malgré le manque de contenu. \n", "\n FORCE ET HONNEUR \n")
 	fmt.Println("1 = Commencer l'aventure ?")
