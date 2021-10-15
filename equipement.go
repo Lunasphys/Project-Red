@@ -23,12 +23,10 @@ func (char1 *personnage) EquipHead(s string) string { // Permet d'équiper la t�
 		char1.Equipement.Tete = s
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Vous venez d'équiper : ", s)
-		fmt.Println(char1.Inventaire)
 	}
 	if !(Contains(char1.Inventaire, s)) {
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Vous n'avez rien à équiper")
-		fmt.Println(char1.Inventaire)
 	}
 	return char1.Equipement.Tete
 }
@@ -38,12 +36,10 @@ func (char1 *personnage) EquipChest(s string) string { // Permet d'équiper le t
 		char1.Equipement.Torse = s
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Vous venez d'équiper : ", s)
-		fmt.Println(char1.Inventaire)
 	}
 	if !(Contains(char1.Inventaire, s)) {
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Vous n'avez rien à équiper")
-		fmt.Println(char1.Inventaire)
 	}
 	return char1.Equipement.Torse
 }
@@ -53,12 +49,10 @@ func (char1 *personnage) EquipBoots(s string) string { // Permet d'équiper les 
 		char1.Equipement.Bottes = s
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Vous venez d'équiper : ", s)
-		fmt.Println(char1.Inventaire)
 	}
 	if !(Contains(char1.Inventaire, s)) {
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println("Vous n'avez rien à équiper")
-		fmt.Println(char1.Inventaire)
 	}
 	return char1.Equipement.Bottes
 }

@@ -83,7 +83,7 @@ func (char1 *personnage) Vente(char2 *Marchand, arg int, objet string) {
 			char1.Inventaire = char1.AddInventory(char1.Inventaire, objet) // Ajoute l'objet à l'inventaire
 			char1.Argent -= arg
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println("Vous venez d'acheter une potion de vie et vous avez dépensé", arg, "pieces d'or")
+			fmt.Println("Vous venez d'acheter une", objet, " et vous avez dépensé", arg, "pieces d'or")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("Il vous reste :", char1.Argent, "pièces d'or")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
