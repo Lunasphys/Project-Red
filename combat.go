@@ -32,7 +32,6 @@ func GoblinPattern(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *pe
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			if char1.Point_de_vie_restant <= 0 { // Mort du gobelin et retour au menu
 				char1.Dead(char3)
-				char1 = char4
 				char1.menu(char2, char3, char4)
 			} else { // Print des tours
 				fmt.Println("======== Tour ", count, " ========")
@@ -47,7 +46,6 @@ func GoblinPattern(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *pe
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			if char1.Point_de_vie_restant <= 0 { // Mort du gobelin et retour au menu
 				char1.Dead(char3)
-				char1 = char4
 				char1.menu(char2, char3, char4)
 			} else {
 				fmt.Println("======== Tour ", count, " ========") // Affichage des tours

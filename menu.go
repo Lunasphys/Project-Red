@@ -4,21 +4,32 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"time"
 )
+
+func SlowPrint(str ...string) {
+	for _, strpart := range str {
+		for _, char := range strpart {
+			fmt.Print(string(char))
+			time.Sleep(40_000_000 * time.Nanosecond)
+		}
+	}
+}
 
 func (char1 *personnage) menu(char2 *Marchand, char3 *monstre, char4 *personnage) { // Le menu du jeu
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-	fmt.Println("Que souhaitez-vous faire ?")
+	SlowPrint("Que souhaitez-vous faire ?\n")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	for {
-		fmt.Println("0 = Afficher les informations du personnages")
-		fmt.Println("1 = Acceder au menu de l'inventaire")
-		fmt.Println("2 = Marchand")
-		fmt.Println("3 = Acceder a la liste de sorts")
-		fmt.Println("4 = Acceder au menu du forgeron")
-		fmt.Println("5 = Acceder a l'équipement")
-		fmt.Println("6 = Engager un combat d'entrainement")
-		fmt.Println("7 = Quitter")
+		SlowPrint("0 = Afficher les informations du personnages\n")
+		SlowPrint("1 = Acceder au menu de l'inventaire\n")
+		SlowPrint("2 = Marchand\n")
+		SlowPrint("3 = Acceder a la liste de sorts\n")
+		SlowPrint("4 = Acceder au menu du forgeron\n")
+		SlowPrint("5 = Acceder a l'équipement\n")
+		SlowPrint("6 = Engager un combat d'entrainement\n")
+		SlowPrint("7 = Qui sont ils?\n")
+		SlowPrint("8 = Quitter\n")
 		// créer une var scanner qui va lire ce que l'utilisateur va écrire
 		scanner := bufio.NewScanner(os.Stdin)
 
@@ -34,15 +45,15 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre, char4 *personnage
 			char1.DisplayInfo()
 		case "1":
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			fmt.Println("Que souhaitez-vous faire ?")
+			SlowPrint("Que souhaitez-vous faire ?\n")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			char1.AccessInventory() // Accès à l'inventaire et ses différentes actions
-			fmt.Println("1 = Choisissez une potion de vie")
-			fmt.Println("2 = Choisissez une potion de poison")
-			fmt.Println("3 = Choisissez une potion de mana")
-			fmt.Println("4 = Choisissez un sac a patate")
-			fmt.Println("5 = Apprendre le sort : Boule de feu")
-			fmt.Println("6 = Ne rien choisir et quitter")
+			SlowPrint("1 = Choisissez une potion de vie\n")
+			SlowPrint("2 = Choisissez une potion de poison\n")
+			SlowPrint("3 = Choisissez une potion de mana\n")
+			SlowPrint("4 = Choisissez un sac a patate\n")
+			SlowPrint("5 = Apprendre le sort : Boule de feu\n")
+			SlowPrint("6 = Ne rien choisir et quitter\n")
 			scanner.Scan() // l'utilisateur input dans la console
 			n := scanner.Text()
 			switch n {
@@ -77,6 +88,9 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre, char4 *personnage
 			char3.DisplayInfo()
 			TrainingFight(char1, char3, char2, char4) // Permet de lancer un combat contre le gobelin d'entraineme    *
 		case "7":
+			fmt.Println("Dans la partie 2 : Le premier artiste caché est ABBA")
+			fmt.Println("Dans la partie 3 : le 2ème artiste caché est le réalisateur Spielberg")
+		case "8":
 			os.Exit(2)
 		}
 	}

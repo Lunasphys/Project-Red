@@ -75,13 +75,6 @@ func (char1 *personnage) ThrowPoisonPot(char3 *monstre) { // Permet d'envoyer un
 }
 func (char1 *personnage) ThrowLifePot(char3 *monstre) { // Permet d'envoyer une potion de soin sur l'ennemi (Pourquoi pas)
 
-	// Does char1.Inventaire contains a potion ?
-	// If no -> I dont have potion
-	// If pv == pv max -> Potion useless
-	// Prend la potion
-	// J'enleve la potion
-	// si pv > pv max alors pv = pv max
-
 	if !Contains(char1.Inventaire, potionDeVie) { // Si le joueur n'en a pas dans son inventaire alors l'action ne peut pas être réalisée
 		fmt.Println("Vous n'avez pas de potion à envoyer")
 	}
