@@ -76,8 +76,11 @@ func (char1 *personnage) ReturnInventaire(char3 *monstre) {
 		char1.ReturnInventaire(char3)
 	case "2":
 		char1.PoisonPot() // Permet d'utiliser une potion de poison (pourquoi pas)
-		char1.Dead(char3)
-		char1.ReturnInventaire(char3)
+		if char1.Point_de_vie_restant <= 0 {
+			char1.Dead(char3)
+		} else {
+			char1.ReturnInventaire(char3)
+		}
 	case "3":
 		char1.TakeManaPot() // Permet d'utiliser une potion de mana
 		char1.ReturnInventaire(char3)

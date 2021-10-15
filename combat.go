@@ -76,8 +76,11 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personn
 			fmt.Println("Choisissez une attaque")
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			fmt.Println("1 = Attaque simple")
+			fmt.Println()
 			fmt.Println("2 = Coup de poing")
+			fmt.Println()
 			fmt.Println("3 = Boule de feu")
+			fmt.Println()
 			fmt.Println("4 = Quittez le menu d'attaque")
 			scanner.Scan()      // l'utilisateur input dans la console
 			m := scanner.Text() // lis ce que l'utilisation a écrit
@@ -131,11 +134,17 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personn
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			char1.AccessInventory() // Accès à l'inventaire et ses diverses possibilités
 			fmt.Println("1 = Choisissez une potion de vie")
+			fmt.Println()
 			fmt.Println("2 = Choisissez une potion de poison")
+			fmt.Println()
 			fmt.Println("3 = Choisissez une potion de mana")
+			fmt.Println()
 			fmt.Println("4 = Envoyer une potion de vie sur le Gobelin")
+			fmt.Println()
 			fmt.Println("5 = Envoyer une potion de poison sur le Gobelin")
+			fmt.Println()
 			fmt.Println("6 = Apprendre le sort : Boule de feu")
+			fmt.Println()
 			fmt.Println("7 = Ne rien choisir et quitter")
 			scanner.Scan() // l'utilisateur input dans la console
 			p := scanner.Text()
@@ -159,7 +168,7 @@ func CharTurn(char1 *personnage, char3 *monstre, char2 *Marchand, char4 *personn
 				fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 				char1.PoisonPot()                      // Permet d'utiliser une potion de poison sur soi même
 				fmt.Println("Vous avez un QI négatif") // Condescendance des développeurs parce qu'on est trop drôle
-				if char3.Point_de_vie_restant <= 0 {   // Si goeblin meurt, le compteur de tour revient à 1 et l'utilisateur se retrouve au menu
+				if char1.Point_de_vie_restant <= 0 {   // Si goeblin meurt, le compteur de tour revient à 1 et l'utilisateur se retrouve au menu
 					char3.Dead2()
 					char1 = char4
 					count = 1

@@ -17,12 +17,13 @@ func SlowPrint(str ...string) {
 }
 
 func (char1 *personnage) menu(char2 *Marchand, char3 *monstre, char4 *personnage) { // Le menu du jeu
-	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-	fmt.Println("----------------------MENU-------------------------")
-	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-	SlowPrint("Que souhaitez-vous faire ?\n")
-	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+
 	for {
+		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+		fmt.Println("----------------------MENU-------------------------")
+		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+		SlowPrint("Que souhaitez-vous faire ?\n")
+		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		SlowPrint("0 = Afficher les informations du personnage\n")
 		fmt.Println()
 		SlowPrint("1 = Acceder au menu de l'inventaire\n")

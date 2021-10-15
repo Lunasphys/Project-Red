@@ -26,10 +26,10 @@ func (char2 *Marchand) Inventaire2() { // Inventaire du marchand
 
 func (char2 *Marchand) returnMarchand(char1 *personnage) { // Permet de ne pas quitter l'interface d'achat du marchand
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Println("-------------------Marchand----------------------")
+	fmt.Println("-------------------MARCHAND----------------------")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-	SlowPrint("Bienvenue chez le Marchand")
-	SlowPrint("Que voulez-vous acheter ?")
+	SlowPrint("Bienvenue chez le Marchand\n")
+	SlowPrint("Que voulez-vous acheter?\n")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("1 = Acheter une potion de vie (3 pièces d'or)")
 	fmt.Println()
