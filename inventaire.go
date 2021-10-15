@@ -32,11 +32,16 @@ func (char *personnage) AddInventory(tab []string, s string) []string { // Perme
 }
 
 func (char1 *personnage) UpgradeInventorySlot() {
-
-	if Contains(char1.Inventaire, "Sac a patate") && len(char1.Inventaire)-1 <= char1.Tailleinventairemax && len(char1.Inventaire)-1 <= 40 {
+	if char1.Tailleinventairemax == 40 {
+		fmt.Println("Vous ne pouvez plus augmentez votre Inventaire")
+	}
+	if !Contains(char1.Inventaire, "Sac a patate") {
+		fmt.Println("Vous n'avez pas de Sac a patate")
+	}
+	if Contains(char1.Inventaire, "Sac a patate") && len(char1.Inventaire)-1 < char1.Tailleinventairemax && char1.Tailleinventairemax < 40 {
 		char1.Tailleinventairemax += 10
 		char1.Inventaire = RemoveInventory(char1.Inventaire, "Sac a patate")
-	} else {
-		fmt.Println("Vous ne pouvez plus augmenter votre inventaire")
+		fmt.Println("Vous avez augmenté votre inventaire de 10 places")
+
 	}
 }
