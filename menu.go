@@ -18,17 +18,27 @@ func SlowPrint(str ...string) {
 
 func (char1 *personnage) menu(char2 *Marchand, char3 *monstre, char4 *personnage) { // Le menu du jeu
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+	fmt.Println("----------------------MENU-------------------------")
+	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	SlowPrint("Que souhaitez-vous faire ?\n")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	for {
-		SlowPrint("0 = Afficher les informations du personnages\n")
+		SlowPrint("0 = Afficher les informations du personnage\n")
+		fmt.Println()
 		SlowPrint("1 = Acceder au menu de l'inventaire\n")
+		fmt.Println()
 		SlowPrint("2 = Marchand\n")
+		fmt.Println()
 		SlowPrint("3 = Acceder a la liste de sorts\n")
+		fmt.Println()
 		SlowPrint("4 = Acceder au menu du forgeron\n")
+		fmt.Println()
 		SlowPrint("5 = Acceder a l'équipement\n")
+		fmt.Println()
 		SlowPrint("6 = Engager un combat d'entrainement\n")
-		SlowPrint("7 = Qui sont ils?\n")
+		fmt.Println()
+		SlowPrint("7 = Qui sont-ils?\n")
+		fmt.Println()
 		SlowPrint("8 = Quitter\n")
 		// créer une var scanner qui va lire ce que l'utilisateur va écrire
 		scanner := bufio.NewScanner(os.Stdin)
@@ -44,34 +54,7 @@ func (char1 *personnage) menu(char2 *Marchand, char3 *monstre, char4 *personnage
 			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 			char1.DisplayInfo()
 		case "1":
-			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			SlowPrint("Que souhaitez-vous faire ?\n")
-			fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-			char1.AccessInventory() // Accès à l'inventaire et ses différentes actions
-			SlowPrint("1 = Choisissez une potion de vie\n")
-			SlowPrint("2 = Choisissez une potion de poison\n")
-			SlowPrint("3 = Choisissez une potion de mana\n")
-			SlowPrint("4 = Choisissez un sac a patate\n")
-			SlowPrint("5 = Apprendre le sort : Boule de feu\n")
-			SlowPrint("6 = Ne rien choisir et quitter\n")
-			scanner.Scan() // l'utilisateur input dans la console
-			n := scanner.Text()
-			switch n {
-			case "1":
-				char1.TakePot() // Permet d'utiliser une potion de vie
-			case "2":
-				char1.PoisonPot() // Permet d'utiliser une potion de poison (pourquoi pas)
-				char1.Dead(char3)
-			case "3":
-				char1.TakeManaPot() // Permet d'utiliser une potion de mana
-			case "4":
-				char1.UpgradeInventorySlot() // Permet d'augmenter son inventaire de 10 slots
-			case "5":
-				char1.LearnSkill()       // Permet d'apprendre un sort
-				fmt.Println(char1.Skill) // Renvoie liste de sorts
-			case "6":
-				break
-			}
+			char1.ReturnInventaire(char3)
 		case "2":
 			char2.returnMarchand(char1) // Rentre dans le menu du marchand
 		case "3":

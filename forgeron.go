@@ -25,12 +25,20 @@ func (char1 *personnage) Craft(quantityA int, quantityB int, itemA string, itemB
 
 func menuCraft(char1 *personnage) { // Ce que le joueur peut forger comme item et les composants demandés
 	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Println("--------------------FORGERON---------------------")
+	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+	SlowPrint("Bienvenue chez le forgeron\n")
+	SlowPrint("Que voulez-vous forger\n ")
+	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("1 = Craft un chapeau de l'aventurier ")
 	fmt.Println("(1 Plume de Corbeau et 1 Cuir de Sanglier)")
+	fmt.Println()
 	fmt.Println("2 = Craft une tunique de l'aventurier ")
 	fmt.Println("(2 Fourrure de Loup et 1 Peau de Troll)")
+	fmt.Println()
 	fmt.Println("3 = Craft des bottes de l'aventurier ")
 	fmt.Println("(1 Fourrure de Loup et 1 Cuir de Sanglier)")
+	fmt.Println()
 	fmt.Println("4 = Quitter le forgeron")
 	scanner.Scan() // l'utilisateur input dans la console
 	d := scanner.Text()

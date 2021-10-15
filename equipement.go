@@ -7,7 +7,7 @@ import (
 )
 
 func (char *equipement) Init(Tete string, Torse string, Bottes string) { // Equipement du personnage
-	char.Tete = Tete 
+	char.Tete = Tete
 	char.Torse = Torse
 	char.Bottes = Bottes
 }
@@ -66,9 +66,16 @@ func (char1 *personnage) EquipBoots(s string) string { // Permet d'équiper les 
 func menuEquipement(char1 *personnage) { // Fonction utiliser dans le menu pour équiper les équipements
 	scanner := bufio.NewScanner(os.Stdin)
 	char1.ShowEquipement()
+	fmt.Println("-------------------EQUIPEMENT--------------------")
+	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+	SlowPrint("Que souhaitez vous équiper")
+	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("1 = Équiper un chapeau de l'aventurier (+10 PV max)")
+	fmt.Println()
 	fmt.Println("2 = Équiper une tunique de l'aventurier (+25 PV max)")
+	fmt.Println()
 	fmt.Println("3 = Équiper des bottes de l'aventurier (+15 PV max)")
+	fmt.Println()
 	fmt.Println("4 = Quitter le menu de l'équipement")
 	scanner.Scan() // l'utilisateur input dans la console
 	e := scanner.Text()
@@ -79,7 +86,7 @@ func menuEquipement(char1 *personnage) { // Fonction utiliser dans le menu pour 
 			break
 		}
 		char1.RemoveItem(char1.Equipement.Tete) // Enlève équipement tête
-		char1.AddItem(chapeauAventurier) // Ajout item
+		char1.AddItem(chapeauAventurier)        // Ajout item
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println(char1.Inventaire) // Imprime l'inventaire
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -90,7 +97,7 @@ func menuEquipement(char1 *personnage) { // Fonction utiliser dans le menu pour 
 			break
 		}
 		char1.RemoveItem(char1.Equipement.Torse) // Enlever équipement torse
-		char1.AddItem(tuniqueAventurier) // Ajout item dans équipement
+		char1.AddItem(tuniqueAventurier)         // Ajout item dans équipement
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println(char1.Inventaire) // Imprime l'inventaire
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -101,7 +108,7 @@ func menuEquipement(char1 *personnage) { // Fonction utiliser dans le menu pour 
 			break
 		}
 		char1.RemoveItem(char1.Equipement.Bottes) // Enlève les bottes
-		char1.AddItem(bottesAventurier) // Ajoute l'item des bottes dans l'équipement
+		char1.AddItem(bottesAventurier)           // Ajoute l'item des bottes dans l'équipement
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 		fmt.Println(char1.Inventaire)
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")

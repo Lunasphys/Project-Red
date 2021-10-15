@@ -49,16 +49,22 @@ func (char1 *personnage) UpgradeInventorySlot() {
 }
 
 func (char1 *personnage) ReturnInventaire(char3 *monstre) {
-
+	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+	fmt.Println("------------------INVENTAIRE---------------------")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	SlowPrint("Que souhaitez-vous faire ?\n")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	char1.AccessInventory() // Accès à l'inventaire et ses différentes actions
 	fmt.Println("1 = Choisissez une potion de vie")
+	fmt.Println()
 	fmt.Println("2 = Choisissez une potion de poison")
+	fmt.Println()
 	fmt.Println("3 = Choisissez une potion de mana")
+	fmt.Println()
 	fmt.Println("4 = Choisissez un sac a patate")
+	fmt.Println()
 	fmt.Println("5 = Apprendre le sort : Boule de feu")
+	fmt.Println()
 	fmt.Println("6 = Ne rien choisir et quitter")
 	// créer une var scanner qui va lire ce que l'utilisateur va écrire
 	scanner := bufio.NewScanner(os.Stdin)
