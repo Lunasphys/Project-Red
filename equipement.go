@@ -57,7 +57,7 @@ func (char1 *personnage) EquipBoots(s string) string { // Permet d'équiper les 
 	return char1.Equipement.Bottes
 }
 
-func menuEquipement(char1 *personnage) { // Fonction utiliser dans le menu pour équiper les équipements
+func menuEquipement(char1 *personnage, char2 *Marchand, char3 *monstre, char4 *personnage) { // Fonction utiliser dans le menu pour équiper les équipements
 	scanner := bufio.NewScanner(os.Stdin)
 	char1.ShowEquipement()
 	fmt.Println("-------------------EQUIPEMENT--------------------")
@@ -107,6 +107,6 @@ func menuEquipement(char1 *personnage) { // Fonction utiliser dans le menu pour 
 		fmt.Println(char1.Inventaire)
 		fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	case "4":
-		break
+		char1.menu(char2, char3, char4)
 	}
 }

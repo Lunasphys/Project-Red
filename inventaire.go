@@ -48,7 +48,7 @@ func (char1 *personnage) UpgradeInventorySlot() {
 	}
 }
 
-func (char1 *personnage) ReturnInventaire(char3 *monstre) {
+func (char1 *personnage) ReturnInventaire(char3 *monstre, char2 *Marchand, char4 *personnage) {
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	fmt.Println("------------------INVENTAIRE---------------------")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -73,26 +73,27 @@ func (char1 *personnage) ReturnInventaire(char3 *monstre) {
 	switch n {
 	case "1":
 		char1.TakePot() // Permet d'utiliser une potion de vie
-		char1.ReturnInventaire(char3)
+		char1.ReturnInventaire(char3, char2, char4)
 	case "2":
 		char1.PoisonPot() // Permet d'utiliser une potion de poison (pourquoi pas)
 		if char1.Point_de_vie_restant <= 0 {
 			char1.Dead(char3)
+			char1.menu(char2, char3, char4)
 		} else {
-			char1.ReturnInventaire(char3)
+			char1.ReturnInventaire(char3, char2, char4)
 		}
 	case "3":
 		char1.TakeManaPot() // Permet d'utiliser une potion de mana
-		char1.ReturnInventaire(char3)
+		char1.ReturnInventaire(char3, char2, char4)
 	case "4":
 		char1.UpgradeInventorySlot() // Permet d'augmenter son inventaire de 10 slots
-		char1.ReturnInventaire(char3)
+		char1.ReturnInventaire(char3, char2, char4)
 	case "5":
 		char1.LearnSkill()       // Permet d'apprendre un sort
 		fmt.Println(char1.Skill) // Renvoie liste de sorts
-		char1.ReturnInventaire(char3)
+		char1.ReturnInventaire(char3, char2, char4)
 	case "6":
-		break
+		char1.menu(char2, char3, char4)
 	}
 
 }

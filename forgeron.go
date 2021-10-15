@@ -23,7 +23,7 @@ func (char1 *personnage) Craft(quantityA int, quantityB int, itemA string, itemB
 	return false
 }
 
-func menuCraft(char1 *personnage) { // Ce que le joueur peut forger comme item et les composants demandés
+func menuCraft(char1 *personnage, char2 *Marchand, char3 *monstre, char4 *personnage) { // Ce que le joueur peut forger comme item et les composants demandés
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("--------------------FORGERON---------------------")
 	fmt.Println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -50,7 +50,7 @@ func menuCraft(char1 *personnage) { // Ce que le joueur peut forger comme item e
 	case "3":
 		char1.Making(5, 1, 1, "Fourrure de Loup", "Cuir de Sanglier", bottesAventurier)
 	case "4":
-		break
+		char1.menu(char2, char3, char4)
 	}
 }
 func (char1 *personnage) Making(argent1 int, nbobjet1 int, nbobjet2 int, objet1 string, objet2 string, equipement string) {
